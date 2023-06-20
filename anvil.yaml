@@ -10,7 +10,7 @@ package_name: HEXC
 allow_embedding: false
 name: HEX Combinator
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-metadata: {title: HEX Combinator, logo_img: 'asset:check link image.png', description: 'HEX
+metadata: {title: HEX Combinator, logo_img: 'asset:Frame 122.jpeg', description: 'HEX
     Combinator is a trustless, dual-chain HEX index tracking the combined eHEX+pHEX
     value. Mint CHEX on Ethereum and PulseChain'}
 startup_form: null

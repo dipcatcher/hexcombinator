@@ -9,7 +9,7 @@ import anvil.server
 
 
 contract_data={}
-contract_data['CHEX']={"address":"0xD5623Bd1eAf6A6d1564d86182197f1E88DdDEba8"}
+contract_data['CHEX']={"address":"0xc5a3b5b534A5404C72e75D803404aFD866A4EB24"}
 contract_data['CHEX']['abi']=[
 	{
 		"inputs": [],

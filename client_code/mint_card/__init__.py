@@ -3,6 +3,7 @@ from anvil import *
 import anvil.server
 from .. import contract_hub as ch
 import time
+from ..about import about
 try:
   from anvil.js.window import ethereum
   is_ethereum=True
@@ -17,6 +18,7 @@ class mint_card(mint_cardTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    
     
     # Any code you write here will run before the form opens.
 
@@ -52,16 +54,18 @@ class mint_card(mint_cardTemplate):
     self.native_approval = int(get_open_form().get_contract_read('HEX').allowance(get_open_form().metamask.address, chex_address).toString())
     self.bridged_approval = int(get_open_form().get_contract_read(get_open_form().bridged_token).allowance(get_open_form().metamask.address, chex_address).toString())
     if self.native_approval<int(self.input_amount.toString()):
-      self.button_approve_hex.text = "Approve {:,f} HEX".format(self.display_amount)
-      self.button_approve_hex.enabled = True
+      if "Approving" not in self.button_approve_hex.text:
+        self.button_approve_hex.text = "Approve {:,f} HEX".format(self.display_amount)
+        self.button_approve_hex.enabled = True
     else:
       self.button_approve_hex.text = "Succesfully Approved {:,f} HEX".format(self.display_amount)
       self.button_approve_hex.enabled = False
       self.button_approve_hex.icon='fa:check'
       is_hex_approved = True
     if self.bridged_approval<int(self.input_amount.toString()):
-      self.button_approve_bridged_hex.text = "Approve {:,f} {}".format(self.display_amount, get_open_form().bridged_token)
-      self.button_approve_bridged_hex.enabled = True
+      if "Approving" not in self.button_approve_bridged_hex.text:
+        self.button_approve_bridged_hex.text = "Approve {:,f} {}".format(self.display_amount, get_open_form().bridged_token)
+        self.button_approve_bridged_hex.enabled = True
     else:
       self.button_approve_bridged_hex.text = "Succesfully Approved {:,f} {}".format(self.display_amount, get_open_form().bridged_token)
       self.button_approve_bridged_hex.enabled = False
@@ -105,8 +109,15 @@ class mint_card(mint_cardTemplate):
   def button_approve_click(self, **event_args):
     """This method is called when the button is clicked"""
     token = "HEX" if event_args['sender']==self.button_approve_hex else get_open_form().bridged_token
-    a = anvil.js.await_promise(get_open_form().get_contract_write(token).approve(ch.contract_data['CHEX']['address'],self.input_amount))
-    a.wait()
+    event_args['sender'].enabled=False
+    event_args['sender'].text= "Approving {}...".format(token)
+    try:
+      a = anvil.js.await_promise(get_open_form().get_contract_write(token).approve(ch.contract_data['CHEX']['address'],self.input_amount))
+      a.wait()
+    except Exception as e:
+      alert("Approval Transaction not completed")
+  
+      
     self.check_approvals()
   def refresh_display(self):
     self.user_data = get_open_form().refresh()
@@ -117,7 +128,7 @@ class mint_card(mint_cardTemplate):
       eth_throttle =int(get_open_form().get_contract_read("CHEX", "ETH").arbitrage_throttle().toString())
       ethereum_throttle = "Ethereum Arbitrage Throttle: {:.8f} ETH".format(eth_throttle/(10**18))
       pls_throttle=int(get_open_form().get_contract_read("CHEX", "PLS").arbitrage_throttle().toString())
-      pulsechain_throttle = "PulseChain Arbitrage Throttle: {:,f} PLS".format(int(pls_throttle/(10**18)))
+      pulsechain_throttle = "PulseChain Arbitrage Throttle: {:,} PLS".format(int(pls_throttle/(10**18)))
       self.label_throttle.text = "{}\n{}".format(ethereum_throttle, pulsechain_throttle)
     else:
       if get_open_form().link_switch.text == "ETH":
@@ -128,12 +139,18 @@ class mint_card(mint_cardTemplate):
         pls_throttle=int(get_open_form().get_contract_read("CHEX", "PLS").arbitrage_throttle().toString())
         pulsechain_throttle = "PulseChain Arbitrage Throttle: {:,} PLS".format(int(pls_throttle/(10**18)))
         self.label_throttle.text = pulsechain_throttle
+    self.supply_data = get_open_form().get_supplies()
+    self.label_echex_supply.text = "{:,}".format(int(self.supply_data[0]/(10**8)))
+    self.label_pchex_supply.text= "{:,}".format(int(self.supply_data[1]/(10**8)))
+    
+    
         
 
 
   def form_show(self, **event_args):
     """This method is called when the column panel is shown on the screen"""
     self.refresh_display()
+    
     
 
   def link_more_info_click(self, **event_args):

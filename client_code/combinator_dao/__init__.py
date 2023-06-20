@@ -17,33 +17,7 @@ class combinator_dao(combinator_daoTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.chain = properties['chain']
-    self.label_chain.text = "Ethereum" if self.chain =='ETH' else "PulseChain"
-    units = "gwei" if self.chain =="ETH" else 'beats'
-    supply = int(get_open_form().get_contract_read("CHEX", self.chain).totalSupply().toString())/(10**8)
-    data_label = "Total CHEX Supply on {}: {} CHEX".format("Ethereum" if self.chain=='ETH' else "PulseChain", supply)
-    self.label_data.text = data_label
-    raw_throttle = get_open_form().get_contract_read("CHEX", self.chain).arbitrage_throttle().toString()
-    simple_throttle = int(raw_throttle)/(10**18)
-    self.label_current_arb.text="Current Arbitrage Throttle: {} {} ({} {})".format(raw_throttle,  units,simple_throttle,self.chain)
-    st = 1
-    unix_timestamp=int(get_open_form().get_contract_read("CHEX", self.chain).scheduled_arbitrage_throttle_change_timestamp().toString())
-    dt = datetime.datetime.fromtimestamp(unix_timestamp)
-    st = int(get_open_form().get_contract_read("CHEX", self.chain).scheduled_arbitrage_throttle().toString())
     
-    simple_sthrottle = st/(10**18)
-    if st ==0:
-      self.label_execute.text = "No throttle changes scheduled."
-    else:
-      self.label_execute.text = "Arbitrage Throttle Scheduled to be changed to {} {} ({} {}) at {}".format(st, units,simple_sthrottle,self.chain, dt.strftime('%Y-%m-%d %H:%M:%S'))
-    #alert(get_open_form().get_contract_read("CHEX").COMBINATOR_DAO_ADDRESS())
-    self.eth_balance=int(get_open_form().providers[self.chain].getBalance(ch.contract_data['CHEX']['address']).toString())
-    bal = "Contract has collected {} {}".format(self.eth_balance/(10**18), self.chain)
-    self.label_proceeds.text = bal
-    self.label_current_dao_address.text= "Combinator DAO Address: {}".format(get_open_form().get_contract_read("CHEX", self.chain).COMBINATOR_DAO_ADDRESS())
-    '''for f in dir(get_open_form().get_contract_read("CHEX", self.chain)):
-      if "(" in f:
-        print(f)
-    '''
     
     # Any code you write here will run before the form opens.
   def is_dao(self):
@@ -72,7 +46,7 @@ class combinator_dao(combinator_daoTemplate):
       a.wait()
       get_open_form().menu_click(sender=get_open_form().latest)
     except Exception as e:
-      alert(e)
+      alert("There are no changes scheduled.")
 
   def button_flush_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -83,7 +57,7 @@ class combinator_dao(combinator_daoTemplate):
       a.wait()
       get_open_form().menu_click(sender=get_open_form().latest)
     except Exception as e:
-      alert(e)
+      pass
 
   def button_update_copy_click(self, **event_args):
     """This method is called when the button is clicked"""
@@ -93,7 +67,35 @@ class combinator_dao(combinator_daoTemplate):
       a.wait()
       get_open_form().menu_click(sender=get_open_form().latest)
     except Exception as e:
-      alert(e)
+      alert("Only Combinator DAO Address can run this.")
+
+  def form_show(self, **event_args):
+    """This method is called when the column panel is shown on the screen"""
+    self.label_chain.text = "Ethereum" if self.chain =='ETH' else "PulseChain"
+    units = "gwei" if self.chain =="ETH" else 'beats'
+    supply = int(get_open_form().get_contract_read("CHEX", self.chain).totalSupply().toString())/(10**8)
+    data_label = "Total CHEX Supply on {}: {} CHEX".format("Ethereum" if self.chain=='ETH' else "PulseChain", supply)
+    self.label_data.text = data_label
+    raw_throttle = get_open_form().get_contract_read("CHEX", self.chain).arbitrage_throttle().toString()
+    simple_throttle = int(raw_throttle)/(10**18)
+    self.label_current_arb.text="Current Arbitrage Throttle: {} {} ({} {})".format(raw_throttle,  units,simple_throttle,self.chain)
+    st = 1
+    unix_timestamp=int(get_open_form().get_contract_read("CHEX", self.chain).scheduled_arbitrage_throttle_change_timestamp().toString())
+    dt = datetime.datetime.fromtimestamp(unix_timestamp)
+    st = int(get_open_form().get_contract_read("CHEX", self.chain).scheduled_arbitrage_throttle().toString())
+    
+    simple_sthrottle = st/(10**18)
+    if st ==0:
+      self.label_execute.text = "No throttle changes scheduled."
+    else:
+      self.label_execute.text = "Arbitrage Throttle Scheduled to be changed to {} {} ({} {}) at {}".format(st, units,simple_sthrottle,self.chain, dt.strftime('%Y-%m-%d %H:%M:%S'))
+    #alert(get_open_form().get_contract_read("CHEX").COMBINATOR_DAO_ADDRESS())
+    self.eth_balance=int(get_open_form().providers[self.chain].getBalance(ch.contract_data['CHEX']['address']).toString())
+    bal = "Contract has collected {} {}".format(self.eth_balance/(10**18), self.chain)
+    self.label_proceeds.text = bal
+    self.label_current_dao_address.text= "Combinator DAO Address: {}".format(get_open_form().get_contract_read("CHEX", self.chain).COMBINATOR_DAO_ADDRESS())
+    
+
 
 
 

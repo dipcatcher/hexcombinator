@@ -28,7 +28,7 @@ class combinator_dao(combinator_daoTemplate):
     unix_timestamp=int(get_open_form().get_contract_read("CHEX", self.chain).scheduled_arbitrage_throttle_change_timestamp().toString())
     dt = datetime.datetime.fromtimestamp(unix_timestamp)
     st = int(get_open_form().get_contract_read("CHEX", self.chain).scheduled_arbitrage_throttle().toString())
-    print(unix_timestamp)
+    
     simple_sthrottle = st/(10**18)
     if st ==0:
       self.label_execute.text = "No throttle changes scheduled."
@@ -39,14 +39,14 @@ class combinator_dao(combinator_daoTemplate):
     bal = "Contract has collected {} {}".format(self.eth_balance/(10**18), self.chain)
     self.label_proceeds.text = bal
     
-    for f in dir(get_open_form().get_contract_read("CHEX", self.chain)):
+    '''for f in dir(get_open_form().get_contract_read("CHEX", self.chain)):
       if "(" in f:
         print(f)
-    
+    '''
     
     # Any code you write here will run before the form opens.
   def is_dao(self):
-    print('dao:', get_open_form().get_contract_read("CHEX", self.chain).COMBINATOR_DAO_ADDRESS())
+    
     is_dao = get_open_form().metamask.address==get_open_form().get_contract_read("CHEX", self.chain).COMBINATOR_DAO_ADDRESS()
     if is_dao:
       return True

@@ -5,10 +5,10 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {}
-startup: {type: form, module: landing_page}
+startup: {type: form, module: Form2}
 package_name: HEXC
 allow_embedding: false
-name: Clone of Clone of HEX Combinator
+name: HEX Combinator
 runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
 metadata: {title: HEX Combinator, logo_img: 'asset:check link image.png', description: 'HEX
     Combinator is a trustless, dual-chain HEX index tracking the combined eHEX+pHEX

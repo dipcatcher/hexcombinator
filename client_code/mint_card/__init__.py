@@ -127,7 +127,7 @@ class mint_card(mint_cardTemplate):
   def form_show(self, **event_args):
     """This method is called when the column panel is shown on the screen"""
     self.refresh_display()
-    print('ok')
+    
 
   def link_more_info_click(self, **event_args):
     """This method is called when the link is clicked"""

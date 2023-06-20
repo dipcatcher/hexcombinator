@@ -55,8 +55,7 @@ class Form1(Form1Template):
     target = 10
     ethrottle=int(target/usd_per_wei)
     pthrottle=int(target/usd_per_beat)
-    print(ethrottle, ethrottle/(10**18))
-    print(pthrottle, pthrottle/(10**18))
+    
     
     
     
@@ -76,7 +75,7 @@ class Form1(Form1Template):
     # Any code you write here will run before the form opens.
   
   def metamask_connect(self, **event_args):
-    print(dir(self.metamask.provider))
+    
     self.chain_id = self.metamask.provider.getNetwork()['chainId']
     self.connected_chain = self.chain_id
     if self.chain_id in [1, 31337]:
@@ -97,8 +96,7 @@ class Form1(Form1Template):
     
   def refresh(self):
     self.user_data = {}
-    print(self.metamask.address)
-    print(self.bridged_token)
+    
     
     if self.current_network is None:
       self.user_data['CHEX Balance']=0
@@ -108,7 +106,7 @@ class Form1(Form1Template):
       self.user_data['CHEX Balance'] = int(self.get_contract_read('CHEX').balanceOf(self.metamask.address).toString())
       self.user_data['Native HEX Balance'] = int(self.get_contract_read('HEX').balanceOf(self.metamask.address).toString())
       self.user_data['Bridged HEX Balance'] = int(self.get_contract_read(self.bridged_token).balanceOf(self.metamask.address).toString())
-      print('yes')
+      
     return self.user_data
 
   def link_switch_click(self, **event_args):

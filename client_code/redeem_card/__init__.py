@@ -73,7 +73,7 @@ class redeem_card(redeem_cardTemplate):
   def form_show(self, **event_args):
     """This method is called when the column panel is shown on the screen"""
     self.refresh_display()
-    print('ok')
+    
 
   def link_1_click(self, **event_args):
     from ..hex_descriptor import hex_descriptor

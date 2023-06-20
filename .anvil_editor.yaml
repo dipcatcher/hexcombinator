@@ -13,7 +13,8 @@ unique_ids:
     mint_card: '1687156223686872780392911.9608'
   modules:
     contract_hub: '168713652122555415221756.09459'
-  server_modules: {}
+  server_modules:
+    ServerModule1: '1687284424330615699020396.5709'
   assets:
     CHEX Logo (100px).svg: '1687235453055201063078392.4199'
     Frame 122.jpeg: '1687240203947868836777685.3572'

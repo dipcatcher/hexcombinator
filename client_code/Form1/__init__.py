@@ -1,5 +1,6 @@
 from ._anvil_designer import Form1Template
 from anvil import *
+import anvil.server
 import anvil.js
 from .. import contract_hub as ch
 from ..mint_card import mint_card
@@ -12,7 +13,7 @@ except:
   is_ethereum=False
 print(is_ethereum)
 pulsechain_url = "https://rpc.pulsechain.com"
-ethereum_url = "http://localhost:8545"# "https://eth-mainnet.g.alchemy.com/v2/CjAeOzPYt5r6PmpSkW-lL1NL7qfZGzIY"
+ethereum_url = "https://eth-mainnet.g.alchemy.com/v2/CjAeOzPYt5r6PmpSkW-lL1NL7qfZGzIY"
 from anvil.js.window import ethers
 class Form1(Form1Template):
   def __init__(self, **properties):

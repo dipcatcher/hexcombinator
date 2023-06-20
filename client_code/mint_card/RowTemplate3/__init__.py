@@ -1,5 +1,6 @@
 from ._anvil_designer import RowTemplate3Template
 from anvil import *
+import anvil.server
 
 class RowTemplate3(RowTemplate3Template):
   def __init__(self, **properties):

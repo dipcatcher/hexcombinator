@@ -1,5 +1,6 @@
 from ._anvil_designer import combinator_daoTemplate
 from anvil import *
+import anvil.server
 import anvil.js
 import datetime
 from .. import contract_hub as ch
@@ -9,7 +10,7 @@ try:
 except:
   is_ethereum=False
 pulsechain_url = "https://rpc.pulsechain.com"
-ethereum_url = "http://localhost:8545"# "https://eth-mainnet.g.alchemy.com/v2/CjAeOzPYt5r6PmpSkW-lL1NL7qfZGzIY"
+ethereum_url ="https://eth-mainnet.g.alchemy.com/v2/CjAeOzPYt5r6PmpSkW-lL1NL7qfZGzIY"
 from anvil.js.window import ethers
 class combinator_dao(combinator_daoTemplate):
   def __init__(self, **properties):

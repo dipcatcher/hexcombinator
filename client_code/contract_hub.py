@@ -1,3 +1,4 @@
+import anvil.server
 # This is a module.
 # You can define variables and functions here, and use them from any form. For example, in a top-level form:
 #
@@ -8,7 +9,7 @@
 
 
 contract_data={}
-contract_data['CHEX']={"address":""}
+contract_data['CHEX']={"address":"0xc5a3b5b534A5404C72e75D803404aFD866A4EB24"}
 contract_data['CHEX']['abi']=[
 	{
 		"inputs": [],

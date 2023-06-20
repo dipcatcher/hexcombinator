@@ -1,5 +1,6 @@
 from ._anvil_designer import redeem_cardTemplate
 from anvil import *
+import anvil.server
 from .. import contract_hub as ch
 try:
   from anvil.js.window import ethereum
@@ -8,7 +9,7 @@ except:
   is_ethereum=False
 import anvil.js
 pulsechain_url = "https://rpc.pulsechain.com"
-ethereum_url = "http://localhost:8545"# "https://eth-mainnet.g.alchemy.com/v2/CjAeOzPYt5r6PmpSkW-lL1NL7qfZGzIY"
+ethereum_url = "https://eth-mainnet.g.alchemy.com/v2/CjAeOzPYt5r6PmpSkW-lL1NL7qfZGzIY"
 from anvil.js.window import ethers
 from anvil.js.window import ethers
 class redeem_card(redeem_cardTemplate):

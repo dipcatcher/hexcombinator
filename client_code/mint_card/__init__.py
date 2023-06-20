@@ -1,7 +1,9 @@
 from ._anvil_designer import mint_cardTemplate
 from anvil import *
+import anvil.server
 from .. import contract_hub as ch
 import time
+from ..about import about
 try:
   from anvil.js.window import ethereum
   is_ethereum=True
@@ -9,13 +11,14 @@ except:
   is_ethereum=False
 import anvil.js
 pulsechain_url = "https://rpc.pulsechain.com"
-ethereum_url = "http://localhost:8545"# "https://eth-mainnet.g.alchemy.com/v2/CjAeOzPYt5r6PmpSkW-lL1NL7qfZGzIY"
+ethereum_url =  "https://eth-mainnet.g.alchemy.com/v2/CjAeOzPYt5r6PmpSkW-lL1NL7qfZGzIY"
 from anvil.js.window import ethers
 from anvil.js.window import ethers
 class mint_card(mint_cardTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
+    
     
     # Any code you write here will run before the form opens.
 
@@ -51,18 +54,20 @@ class mint_card(mint_cardTemplate):
     self.native_approval = int(get_open_form().get_contract_read('HEX').allowance(get_open_form().metamask.address, chex_address).toString())
     self.bridged_approval = int(get_open_form().get_contract_read(get_open_form().bridged_token).allowance(get_open_form().metamask.address, chex_address).toString())
     if self.native_approval<int(self.input_amount.toString()):
-      self.button_approve_hex.text = "Approve {} HEX".format(self.display_amount)
-      self.button_approve_hex.enabled = True
+      if "Approving" not in self.button_approve_hex.text:
+        self.button_approve_hex.text = "Approve {:,f} HEX".format(self.display_amount)
+        self.button_approve_hex.enabled = True
     else:
-      self.button_approve_hex.text = "Succesfully Approved {} HEX".format(self.display_amount)
+      self.button_approve_hex.text = "Succesfully Approved {:,f} HEX".format(self.display_amount)
       self.button_approve_hex.enabled = False
       self.button_approve_hex.icon='fa:check'
       is_hex_approved = True
     if self.bridged_approval<int(self.input_amount.toString()):
-      self.button_approve_bridged_hex.text = "Approve {} {}".format(self.display_amount, get_open_form().bridged_token)
-      self.button_approve_bridged_hex.enabled = True
+      if "Approving" not in self.button_approve_bridged_hex.text:
+        self.button_approve_bridged_hex.text = "Approve {:,f} {}".format(self.display_amount, get_open_form().bridged_token)
+        self.button_approve_bridged_hex.enabled = True
     else:
-      self.button_approve_bridged_hex.text = "Succesfully Approved {} {}".format(self.display_amount, get_open_form().bridged_token)
+      self.button_approve_bridged_hex.text = "Succesfully Approved {:,f} {}".format(self.display_amount, get_open_form().bridged_token)
       self.button_approve_bridged_hex.enabled = False
       self.button_approve_bridged_hex.icon='fa:check'
       is_bridged_hex_approved = True
@@ -88,7 +93,13 @@ class mint_card(mint_cardTemplate):
     try:
       a = anvil.js.await_promise(get_open_form().get_contract_write("CHEX").mint(self.input_amount, {"value":throttle}))
       a.wait()
+      
       success=True
+      try:
+        chain = "Ethereum" if get_open_form().link_switch.text=='ETH' else "PulseChain"
+        anvil.server.call("send_tweet", int(self.input_amount.toString())/(10**8), get_open_form().metamask.address,chain )
+      except:
+        pass
     except Exception as e:
       if 'object Object' in str(e):
         alert("Transaction not completed")
@@ -98,19 +109,26 @@ class mint_card(mint_cardTemplate):
   def button_approve_click(self, **event_args):
     """This method is called when the button is clicked"""
     token = "HEX" if event_args['sender']==self.button_approve_hex else get_open_form().bridged_token
-    a = anvil.js.await_promise(get_open_form().get_contract_write(token).approve(ch.contract_data['CHEX']['address'],self.input_amount))
-    a.wait()
+    event_args['sender'].enabled=False
+    event_args['sender'].text= "Approving {}...".format(token)
+    try:
+      a = anvil.js.await_promise(get_open_form().get_contract_write(token).approve(ch.contract_data['CHEX']['address'],self.input_amount))
+      a.wait()
+    except Exception as e:
+      alert("Approval Transaction not completed")
+  
+      
     self.check_approvals()
   def refresh_display(self):
     self.user_data = get_open_form().refresh()
-    self.label_native_hex_balance.text = "{} HEX".format(self.user_data['Native HEX Balance']/(10**8))
-    self.label_bridged_hex_balance.text = "{} {}".format(self.user_data['Bridged HEX Balance']/(10**8), get_open_form().bridged_token or "Bridged HEX")
-    self.label_chex_balance.text = "{} CHEX".format(self.user_data['CHEX Balance']/(10**8))
+    self.label_native_hex_balance.text = "{:,.1f} HEX".format(self.user_data['Native HEX Balance']/(10**8))
+    self.label_bridged_hex_balance.text = "{:,.1f} {}".format(self.user_data['Bridged HEX Balance']/(10**8), get_open_form().bridged_token or "Bridged HEX")
+    self.label_chex_balance.text = "{:,.1f} CHEX".format(self.user_data['CHEX Balance']/(10**8))
     if get_open_form().metamask.address is None:
       eth_throttle =int(get_open_form().get_contract_read("CHEX", "ETH").arbitrage_throttle().toString())
       ethereum_throttle = "Ethereum Arbitrage Throttle: {:.8f} ETH".format(eth_throttle/(10**18))
       pls_throttle=int(get_open_form().get_contract_read("CHEX", "PLS").arbitrage_throttle().toString())
-      pulsechain_throttle = "PulseChain Arbitrage Throttle: {:.8f} PLS".format(pls_throttle/(10**18))
+      pulsechain_throttle = "PulseChain Arbitrage Throttle: {:,} PLS".format(int(pls_throttle/(10**18)))
       self.label_throttle.text = "{}\n{}".format(ethereum_throttle, pulsechain_throttle)
     else:
       if get_open_form().link_switch.text == "ETH":
@@ -121,12 +139,18 @@ class mint_card(mint_cardTemplate):
         pls_throttle=int(get_open_form().get_contract_read("CHEX", "PLS").arbitrage_throttle().toString())
         pulsechain_throttle = "PulseChain Arbitrage Throttle: {:,} PLS".format(int(pls_throttle/(10**18)))
         self.label_throttle.text = pulsechain_throttle
+    self.supply_data = get_open_form().get_supplies()
+    self.label_echex_supply.text = "{:,}".format(int(self.supply_data[0]/(10**8)))
+    self.label_pchex_supply.text= "{:,}".format(int(self.supply_data[1]/(10**8)))
+    
+    
         
 
 
   def form_show(self, **event_args):
     """This method is called when the column panel is shown on the screen"""
     self.refresh_display()
+    
     
 
   def link_more_info_click(self, **event_args):
@@ -136,7 +160,7 @@ class mint_card(mint_cardTemplate):
 
   def link_throttle_click(self, **event_args):
     """This method is called when the link is clicked"""
-    d = '''An arbitrage throttle is set by the Combinator DAO to introduce a small fixed cost to minting CHEX, paid in ETH or PLS. It was initialized to be close to $10 at current prices. \nThe arbitrage throttle only applies to minting, not redeeming.\nThe arbitrage throttle is designed so that users below some value threshold can get a better deal buying CHEX instead of minting, which helps foster an active market.\nThe arbitrage throttle is also a type of size bonus, where the more CHEX you mint, the smaller percent of the total the arbitrage throttle is. \nThe arbitrage throttle can be changed at any time by the Combinator DAO. A 24 hour delay is implemented between when a change is scheduled to when it is implemented. There should be no expectations for what Combinator DAO does with this ETH and PLS.'''
+    d = '''An arbitrage throttle is set by the Combinator DAO to introduce a small fixed cost to minting CHEX, paid in ETH or PLS. It was initialized to be close to $10 at current prices. \nThe arbitrage throttle only applies to minting, not redeeming.\nThe arbitrage throttle is designed so that users below some value threshold can get a better deal buying CHEX instead of minting, which helps foster an active market.\nThe arbitrage throttle is also a type of size bonus, where the more CHEX you mint, the smaller percent of the total the arbitrage throttle is. \nThe arbitrage throttle can be changed at any time by the Combinator DAO. A 24 hour delay is implemented between when a change is scheduled to when it is implemented. The Combinator DAO collects this ETH or PLS and there should be no expectations for what Combinator DAO does with it.'''
     alert(d, title="Arbitrage Throttle", large=True)
 
 

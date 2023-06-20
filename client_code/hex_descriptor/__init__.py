@@ -1,5 +1,6 @@
 from ._anvil_designer import hex_descriptorTemplate
 from anvil import *
+import anvil.server
 
 class hex_descriptor(hex_descriptorTemplate):
   def __init__(self, **properties):

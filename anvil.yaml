@@ -5,7 +5,7 @@ services:
 - source: /runtime/services/tables.yml
   client_config: {}
   server_config: {}
-startup: {type: form, module: Form2}
+startup: {type: form, module: Form1}
 package_name: HEXC
 allow_embedding: false
 name: HEX Combinator

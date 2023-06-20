@@ -1,6 +1,7 @@
 container:
   type: ColumnPanel
   properties: {col_widths: '{}'}
+  event_bindings: {show: form_show}
 components:
 - type: Label
   properties: {role: title, align: left, tooltip: '', border: '', foreground: '',
@@ -83,9 +84,9 @@ components:
   components:
   - type: Label
     properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
-      visible: true, text: 'Collect Arbitrage Throttle ', font_size: 16, font: Inter,
-      spacing_above: none, icon_align: left, spacing_below: none, italic: false, background: '',
-      bold: true, underline: false, icon: ''}
+      visible: true, text: Transfer Arbitrage Throttle to Combinator DAO, font_size: 16,
+      font: Inter, spacing_above: none, icon_align: left, spacing_below: none, italic: false,
+      background: '', bold: true, underline: false, icon: ''}
     name: label_2
     layout_properties: {grid_position: 'IXWUXO,VCQSQJ'}
   - type: Label
@@ -103,4 +104,40 @@ components:
     name: button_flush
     layout_properties: {grid_position: 'LAKTAS,UDPCQO'}
     event_bindings: {click: button_flush_click}
+- type: ColumnPanel
+  properties: {role: outlined-card, col_widths: '{}'}
+  name: outlined_card_1_copy
+  layout_properties:
+    col_widths: {}
+    grid_position: GDECQB,JPBUMQ
+  components:
+  - type: Label
+    properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+      visible: true, text: Transfer Combinator DAO Address, font_size: 16, font: Inter,
+      spacing_above: none, icon_align: left, spacing_below: none, italic: false, background: '',
+      bold: true, underline: false, icon: ''}
+    name: label_1_copy_2
+    layout_properties: {grid_position: 'EPGIIS,EAUPOW'}
+  - type: Label
+    properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+      visible: true, text: '', font_size: 14, font: Inter, spacing_above: large, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: label_current_dao_address
+    layout_properties: {grid_position: 'TDVSZG,JXYUTD'}
+  - type: TextBox
+    properties: {role: outlined, align: left, hide_text: false, tooltip: '', placeholder: '',
+      border: '', enabled: true, foreground: white, visible: true, text: '', font_size: null,
+      font: Inter, spacing_above: large, type: text, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: text_box_new_address
+    layout_properties: {grid_position: 'IUXNHB,YQXFJN'}
+  - type: Button
+    properties: {role: filled-button, align: center, tooltip: '', border: '', enabled: true,
+      foreground: white, visible: true, text: Transfer, font_size: null, font: Inter,
+      spacing_above: medium, icon_align: left, spacing_below: none, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: button_update_copy
+    layout_properties: {grid_position: 'HEIXIL,DZYUTB'}
+    event_bindings: {click: button_update_copy_click}
 is_package: true

@@ -1,5 +1,6 @@
 from ._anvil_designer import chex_text_boxTemplate
 from anvil import *
+import anvil.server
 
 class chex_text_box(chex_text_boxTemplate):
   def __init__(self, **properties):

@@ -1,22 +1,26 @@
 from ._anvil_designer import Form1Template
 from anvil import *
+import anvil.server
 import anvil.js
 from .. import contract_hub as ch
 from ..mint_card import mint_card
 from ..redeem_card import redeem_card
 from ..combinator_dao import combinator_dao
+from ..about import about
 try:
   from anvil.js.window import ethereum
   is_ethereum=True
 except:
   is_ethereum=False
+print(is_ethereum)
 pulsechain_url = "https://rpc.pulsechain.com"
-ethereum_url = "http://localhost:8545"# "https://eth-mainnet.g.alchemy.com/v2/CjAeOzPYt5r6PmpSkW-lL1NL7qfZGzIY"
+ethereum_url = "https://eth-mainnet.g.alchemy.com/v2/CjAeOzPYt5r6PmpSkW-lL1NL7qfZGzIY"
 from anvil.js.window import ethers
 class Form1(Form1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.metamask.button_1.role = 'filled-button'
+    
     self.init_components(**properties)
     self.current_network = None
     urls = {"PLS":pulsechain_url, "ETH":ethereum_url}
@@ -24,11 +28,22 @@ class Form1(Form1Template):
     self.providers = {}
     self.providers['ETH'] = ethers.providers.JsonRpcProvider(urls["ETH"])
     self.providers["PLS"]= ethers.providers.JsonRpcProvider(urls["PLS"])
-    self.menu_click(sender=self.link_mint)
+    self.menu_click(sender=self.link_about)
+    
   def menu_click(self, **event_args):
     self.latest = event_args['sender']
+    a = about()
+    a.image_1_copy.visible=False
+    a.label_1.visible=False
+    a.label_2.visible = False
+    a.flow_panel_1.visible=False
+    a.spacer_2_copy.visible=False
+    do_show = True
     if event_args['sender']==self.link_mint:
       page = mint_card()
+    elif event_args['sender']==self.link_about:
+      page = about()
+      do_show=False
     elif event_args['sender'] ==self.link_redeem:
       page = redeem_card()
     elif event_args['sender']==self.link_combinator:
@@ -44,7 +59,10 @@ class Form1(Form1Template):
         page.add_component(combinator_dao(chain=self.link_switch.text))
     self.panel_manage.clear()
     self.panel_manage.add_component(page)
-    page.scroll_into_view()
+    if do_show:
+      self.panel_manage.add_component(a)
+    self.get_supplies()
+    
     
   def calc_fee(self):
     usd_per_heart = .02/(10**8)
@@ -106,9 +124,12 @@ class Form1(Form1Template):
       self.user_data['CHEX Balance'] = int(self.get_contract_read('CHEX').balanceOf(self.metamask.address).toString())
       self.user_data['Native HEX Balance'] = int(self.get_contract_read('HEX').balanceOf(self.metamask.address).toString())
       self.user_data['Bridged HEX Balance'] = int(self.get_contract_read(self.bridged_token).balanceOf(self.metamask.address).toString())
-      
+    
     return self.user_data
-
+  def get_supplies(self):
+    echex_supply = int(self.get_contract_read("CHEX", "ETH").totalSupply().toString())
+    pchex_supply = int(self.get_contract_read("CHEX", "PLS").totalSupply().toString())
+    return echex_supply, pchex_supply
   def link_switch_click(self, **event_args):
     """This method is called when the button is clicked"""
     if self.metamask.address is None:
@@ -119,9 +140,9 @@ class Form1(Form1Template):
     elif self.connected_chain in [369]:
       self.current_network = "PLS"
       
-    c = confirm("You are currently connected to {}.".format(self.current_network),title="Choose Network",buttons=[("Ethereum", True), ("Pulsechain", False)])
+    c = confirm("You are currently connected to {}.".format(self.current_network),title="Choose Network",buttons=[("Ethereum", True), ("PulseChain", False)])
     if c:
-      chain_id = "0x7A69"#"0x1"
+      chain_id ="0x1"
     else:
       chain_id = "0x171"
     try:
@@ -137,6 +158,38 @@ class Form1(Form1Template):
     self.metamask.update_signer()
     self.metamask_connect()
     #self.menu_click(sender=self.latest)   
+
+  def link_add_click(self, **event_args):
+   
+    """This method is called when the link is clicked"""
+    if event_args['sender'].icon == 'fa:check':
+      pass
+    else:
+      try:
+        tokenSymbol = "CHEX"
+        tokenDecimals = 8
+        tokenImage = "{}/_/theme/CHEX%20Logo%20(100px).svg".format(anvil.server.get_app_origin())#'https://watery-decisive-guitar.anvil.app/_/api/name/maxi.jpg';
+        print(tokenImage)
+        from anvil.js.window import ethereum
+        a = ethereum.request({
+        'method': 'wallet_watchAsset',
+        'params': {
+          'type': 'ERC20', 
+          'options': {
+            'address': ch.contract_data['CHEX']['address'], 
+            'symbol': tokenSymbol, 
+            'decimals': tokenDecimals, 
+            'image': tokenImage, 
+          },
+        },
+      })
+        anvil.js.await_promise(a)
+        
+        
+        event_args['sender'].icon = 'fa:check'
+        event_args['sender'].text='CHEX Added'
+      except Exception as e:
+        print(e)
 
 
  

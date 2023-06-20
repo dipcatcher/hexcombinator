@@ -1,5 +1,6 @@
 from ._anvil_designer import combinator_daoTemplate
 from anvil import *
+import anvil.server
 import anvil.js
 import datetime
 from .. import contract_hub as ch
@@ -9,13 +10,67 @@ try:
 except:
   is_ethereum=False
 pulsechain_url = "https://rpc.pulsechain.com"
-ethereum_url = "http://localhost:8545"# "https://eth-mainnet.g.alchemy.com/v2/CjAeOzPYt5r6PmpSkW-lL1NL7qfZGzIY"
+ethereum_url ="https://eth-mainnet.g.alchemy.com/v2/CjAeOzPYt5r6PmpSkW-lL1NL7qfZGzIY"
 from anvil.js.window import ethers
 class combinator_dao(combinator_daoTemplate):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
     self.chain = properties['chain']
+    
+    
+    # Any code you write here will run before the form opens.
+  def is_dao(self):
+    
+    is_dao = get_open_form().metamask.address==get_open_form().get_contract_read("CHEX", self.chain).COMBINATOR_DAO_ADDRESS()
+    if is_dao:
+      return True
+    else:
+      alert("Only the Combinator DAO address can run this function.")
+      return False
+    
+  def button_update_click(self, **event_args):
+    if not self.is_dao():
+      return False
+    self.write_contract=get_open_form().get_contract_write("CHEX")
+    a = anvil.js.await_promise(self.write_contract.scheduleArbitrageThrottleChange(self.text_box_new_arbitrage.text))
+    a.wait()
+    get_open_form().menu_click(sender=get_open_form().latest)
+
+  def button_execute_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    
+    try:
+      self.write_contract=get_open_form().get_contract_write("CHEX")
+      a = anvil.js.await_promise(self.write_contract.executeArbitrageThrottleChange())
+      a.wait()
+      get_open_form().menu_click(sender=get_open_form().latest)
+    except Exception as e:
+      alert("There are no changes scheduled.")
+
+  def button_flush_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    
+    try:
+      self.write_contract=get_open_form().get_contract_write("CHEX")
+      a = anvil.js.await_promise(self.write_contract.collectArbitrageThrottle())
+      a.wait()
+      get_open_form().menu_click(sender=get_open_form().latest)
+    except Exception as e:
+      pass
+
+  def button_update_copy_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    try:
+      self.write_contract=get_open_form().get_contract_write("CHEX")
+      a = anvil.js.await_promise(self.write_contract.changeCombinatorDaoAddress(self.text_box_new_address.text))
+      a.wait()
+      get_open_form().menu_click(sender=get_open_form().latest)
+    except Exception as e:
+      alert("Only Combinator DAO Address can run this.")
+
+  def form_show(self, **event_args):
+    """This method is called when the column panel is shown on the screen"""
     self.label_chain.text = "Ethereum" if self.chain =='ETH' else "PulseChain"
     units = "gwei" if self.chain =="ETH" else 'beats'
     supply = int(get_open_form().get_contract_read("CHEX", self.chain).totalSupply().toString())/(10**8)
@@ -38,52 +93,9 @@ class combinator_dao(combinator_daoTemplate):
     self.eth_balance=int(get_open_form().providers[self.chain].getBalance(ch.contract_data['CHEX']['address']).toString())
     bal = "Contract has collected {} {}".format(self.eth_balance/(10**18), self.chain)
     self.label_proceeds.text = bal
+    self.label_current_dao_address.text= "Combinator DAO Address: {}".format(get_open_form().get_contract_read("CHEX", self.chain).COMBINATOR_DAO_ADDRESS())
     
-    '''for f in dir(get_open_form().get_contract_read("CHEX", self.chain)):
-      if "(" in f:
-        print(f)
-    '''
-    
-    # Any code you write here will run before the form opens.
-  def is_dao(self):
-    
-    is_dao = get_open_form().metamask.address==get_open_form().get_contract_read("CHEX", self.chain).COMBINATOR_DAO_ADDRESS()
-    if is_dao:
-      return True
-    else:
-      alert("Only the Combinator DAO address can run these functions.")
-      return False
-    
-  def button_update_click(self, **event_args):
-    if not self.is_dao():
-      return False
-    self.write_contract=get_open_form().get_contract_write("CHEX")
-    a = anvil.js.await_promise(self.write_contract.scheduleArbitrageThrottleChange(self.text_box_new_arbitrage.text))
-    a.wait()
-    get_open_form().menu_click(sender=get_open_form().latest)
 
-  def button_execute_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    if not self.is_dao():
-      return False
-    try:
-      self.write_contract=get_open_form().get_contract_write("CHEX")
-      a = anvil.js.await_promise(self.write_contract.executeArbitrageThrottleChange())
-      a.wait()
-      get_open_form().menu_click(sender=get_open_form().latest)
-    except Exception as e:
-      alert(e)
 
-  def button_flush_click(self, **event_args):
-    """This method is called when the button is clicked"""
-    if not self.is_dao():
-      return False
-    try:
-      self.write_contract=get_open_form().get_contract_write("CHEX")
-      a = anvil.js.await_promise(self.write_contract.collectArbitrageThrottle())
-      a.wait()
-      get_open_form().menu_click(sender=get_open_form().latest)
-    except Exception as e:
-      alert(e)
 
 

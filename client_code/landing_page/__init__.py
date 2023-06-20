@@ -1,5 +1,6 @@
 from ._anvil_designer import landing_pageTemplate
 from anvil import *
+import anvil.server
 
 class landing_page(landing_pageTemplate):
   def __init__(self, **properties):

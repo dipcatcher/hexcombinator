@@ -8,8 +8,7 @@
 
 
 contract_data={}
-contract_data['CHEX']={"address":"0xD5623Bd1eAf6A6d1564d86182197f1E88DdDEba8"}#"0x31d806AD57ab66c8d88F62f32A0303A27b95a527"}#"0xb49a119925aCd87126c2Ad77188a054BAf762fA6"}
-#contract_data['CHEX']={"address":"0x1dBDba33dfA381bCC89FCe74DFF69Aa96B53b503"}
+contract_data['CHEX']={"address":""}
 contract_data['CHEX']['abi']=[
 	{
 		"inputs": [],

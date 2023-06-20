@@ -5,7 +5,7 @@ components:
   name: content_panel_copy
   layout_properties:
     col_widths: {}
-    grid_position: AXZXAK,GTXJPD
+    grid_position: YFMVKC,YEEZKO
   components:
   - type: Spacer
     properties: {visible: true, spacing_above: small, spacing_below: small, height: '40',
@@ -19,101 +19,148 @@ components:
     name: column_panel_2_copy
     layout_properties: {grid_position: 'QWKSRY,BDHNLT'}
     components:
-    - type: Image
-      properties: {role: null, vertical_align: center, height: '200', tooltip: '',
-        border: '', foreground: '', visible: true, display_mode: shrink_to_fit, spacing_above: small,
-        source: _/theme/CHEX%20Logo%20(100px).svg, spacing_below: large, background: '',
-        horizontal_align: center}
-      name: image_1_copy
-      layout_properties: {grid_position: 'QJVJRC,JFHGTE'}
-    - type: Label
-      properties: {role: title, align: center, tooltip: '', border: '', foreground: '',
-        visible: true, text: CHEX, font_size: 56, font: Inter, spacing_above: medium,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
-        underline: false, icon: ''}
-      name: label_1
-      layout_properties: {grid_position: 'QKQWYR,KDZDRV'}
-    - type: Label
-      properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
-        visible: true, text: 'The trustless cross-chain
+    - type: ColumnPanel
+      properties: {role: tonal-card, tooltip: '', border: '', foreground: '', visible: true,
+        wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+        spacing_below: small, background: black}
+      name: outlined_card_1
+      layout_properties: {grid_position: 'CRNNHF,DKKKOQ'}
+      components:
+      - type: Image
+        properties: {role: null, vertical_align: center, height: '200', tooltip: '',
+          border: '', foreground: '', visible: true, display_mode: shrink_to_fit,
+          spacing_above: small, source: _/theme/CHEX%20Logo%20(100px).svg, spacing_below: large,
+          background: '', horizontal_align: center}
+        name: image_1_copy
+        layout_properties: {grid_position: 'MUATGF,AGHOCO'}
+      - type: Label
+        properties: {role: title, align: center, tooltip: '', border: '', foreground: '',
+          visible: true, text: CHEX, font_size: 56, font: Inter, spacing_above: medium,
+          icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+          underline: false, icon: ''}
+        name: label_1
+        layout_properties: {grid_position: 'ZTZEMZ,UDYGLT'}
+      - type: Label
+        properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
+          visible: true, text: 'The trustless cross-chain
 
-          HEX index.', font_size: 24, font: Inter, spacing_above: small, icon_align: left,
-        spacing_below: small, italic: false, background: '', bold: false, underline: false,
-        icon: ''}
-      name: label_2
-      layout_properties: {grid_position: 'CIEAKE,VJOUAM'}
-    - type: Spacer
-      properties: {visible: true, spacing_above: small, spacing_below: small, height: '16',
-        tooltip: ''}
-      name: spacer_2_copy
-      layout_properties: {grid_position: 'YEBIID,UVEXFG'}
+            HEX index.', font_size: 24, font: Inter, spacing_above: small, icon_align: left,
+          spacing_below: small, italic: false, background: '', bold: false, underline: false,
+          icon: ''}
+        name: label_2
+        layout_properties: {grid_position: 'ONDZZV,WYREKT'}
+      - type: Spacer
+        properties: {visible: true, spacing_above: small, spacing_below: small, height: '16',
+          tooltip: ''}
+        name: spacer_2_copy
+        layout_properties: {grid_position: 'BAIIFF,KEFHTF'}
+      - type: RichText
+        properties: {role: null, align: left, tooltip: '', enable_slots: true, border: '',
+          foreground: '', visible: true, font_size: null, content: "HEX Combinator\
+            \ (CHEX) is a dual chain index token backed by an equal number of eHEX\
+            \ and pHEX. Anyone can mint 1 CHEX by depositing 1 pHEX and 1 eHEX to\
+            \ the HEX Combinator trustless smart contract. At any time, 1 pHEX and\
+            \ 1 eHEX can be redeemed per CHEX token burnt through the HEX Combinator\
+            \ smart contract.\n\nHEX Combinator will be simultaneously deployed on\
+            \ both PulseChain and Ethereum. Minting 1 CHEX on PulseChain requires\
+            \ 1 native pHEX and 1 bridged eHEX. Minting 1 CHEX on Ethereum requires\
+            \ 1 native eHEX and 1 bridged pHEX. \n\nCHEX is designed to track the\
+            \ combined value of eHEX and pHEX through a bi-directional, dual chain\
+            \ minting and redemption function. If CHEX on one chain becomes worth\
+            \ more than CHEX on the other chain, it creates an arbitrage opportunity\
+            \ to buy the lower priced one, redeem the HEX and bridged HEX, bridge\
+            \ them over, and re-mint on the other side.\n\nDue to this arbitrage cycle\
+            \ that keeps the price between CHEX on both chains relatively constant,\
+            \ providing liquidity between the two could be a high yield, low impermanent-loss\
+            \ liquidity strategy.\n\nThe goal is to have a token that roughly tracks\
+            \ the combined value of HEX on Ethereum and HEX on PulseChain. This is\
+            \ a solution for new onboards to the HEX ecosystem to gain exposure to\
+            \ both eHEX and pHEX with one simple swap, as if they were here before\
+            \ the fork. Additionally, this is part of a larger liquidity bonding and\
+            \ indexing solution for the upcoming {g}.", font: '', spacing_above: small,
+          spacing_below: small, data: null, background: '', format: plain_text}
+        name: rich_text_2_copy
+        layout_properties:
+          col_widths: {}
+          grid_position: FXFFJM,QEYKMI
+        components:
+        - type: Link
+          properties: {role: body, url: 'https://hexpool.party', align: left, tooltip: '',
+            border: '', foreground: '', visible: true, text: Pool Party Stake Pools,
+            font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small,
+            icon_align: left, col_widths: '', spacing_below: small, italic: false,
+            background: '', bold: false, underline: false, icon: ''}
+          name: link_4_copy
+          layout_properties: {slot: g}
+        - type: RichText
+          properties: {role: null, align: left, tooltip: '', enable_slots: true, border: '',
+            foreground: '', visible: true, font_size: null, content: 'HEX Combinator
+              is launching any minute now. For official updates, follow:
+
+              {m} {t} {g}', font: '', spacing_above: small, spacing_below: small,
+            data: null, background: '', format: markdown}
+          name: rich_text_1
+          layout_properties: {grid_position: 'RYIDRD,OUCGJC'}
+          components:
+          - type: Link
+            properties: {role: body, url: 'https://twitter.com/maximus_dao', align: left,
+              tooltip: '', border: '', foreground: '', visible: true, text: '@Maximus_DAO',
+              font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: none,
+              icon_align: left, col_widths: '', spacing_below: none, italic: false,
+              background: '', bold: false, underline: false, icon: ''}
+            name: link_1
+            layout_properties: {slot: m}
+          - type: Link
+            properties: {role: body, url: 'https://twitter.com/TantoNomini', align: left,
+              tooltip: '', border: '', foreground: '', visible: true, text: '@TantoNomini',
+              font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: none,
+              icon_align: left, col_widths: '', spacing_below: none, italic: false,
+              background: '', bold: false, underline: false, icon: ''}
+            name: link_2
+            layout_properties: {slot: t}
+          - type: Link
+            properties: {role: body, url: 'https://twitter.com/goldk3y_', align: left,
+              tooltip: '', border: '', foreground: '', visible: true, text: '@Goldk3y_',
+              font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: none,
+              icon_align: left, col_widths: '', spacing_below: small, italic: false,
+              background: '', bold: false, underline: false, icon: ''}
+            name: link_3
+            layout_properties: {slot: g}
     - type: RichText
       properties: {role: null, align: left, tooltip: '', enable_slots: true, border: '',
-        foreground: '', visible: true, font_size: null, content: "HEX Combinator (CHEX)\
-          \ is a dual chain index token backed by an equal number of eHEX and pHEX.\
-          \ Anyone can mint 1 CHEX by depositing 1 pHEX and 1 eHEX to the HEX Combinator\
-          \ trustless smart contract. At any time, 1 pHEX and 1 eHEX can be redeemed\
-          \ per CHEX token burnt through the HEX Combinator smart contract.\n\nHEX\
-          \ Combinator will be simultaneously deployed on both PulseChain and Ethereum.\
-          \ Minting 1 CHEX on PulseChain requires 1 native pHEX and 1 bridged eHEX.\
-          \ Minting 1 CHEX on Ethereum requires 1 native eHEX and 1 bridged pHEX.\
-          \ \n\nCHEX is designed to track the combined value of eHEX and pHEX through\
-          \ a bi-directional, dual chain minting and redemption function. If CHEX\
-          \ on one chain becomes worth more than CHEX on the other chain, it creates\
-          \ an arbitrage opportunity to buy the lower priced one, redeem the HEX and\
-          \ bridged HEX, bridge them over, and re-mint on the other side.\n\nDue to\
-          \ this arbitrage cycle that keeps the price between CHEX on both chains\
-          \ relatively constant, providing liquidity between the two could be a high\
-          \ yield, low impermanent-loss liquidity strategy.\n\nThe goal is to have\
-          \ a token that roughly tracks the combined value of HEX on Ethereum and\
-          \ HEX on PulseChain. This is a solution for new onboards to the HEX ecosystem\
-          \ to gain exposure to both eHEX and pHEX with one simple swap, as if they\
-          \ were here before the fork. Additionally, this is part of a larger liquidity\
-          \ bonding and indexing solution for the upcoming {g}.", font: '', spacing_above: small,
-        spacing_below: small, data: null, background: '', format: plain_text}
+        foreground: '', visible: false, font_size: null, content: "HEX Combinator\
+          \ (CHEX) is a dual chain index token backed by an equal number of eHEX and\
+          \ pHEX. Anyone can mint 1 CHEX by depositing 1 pHEX and 1 eHEX to the HEX\
+          \ Combinator trustless smart contract. At any time, 1 pHEX and 1 eHEX can\
+          \ be redeemed per CHEX token burnt through the HEX Combinator smart contract.\n\
+          \nHEX Combinator will be simultaneously deployed on both PulseChain and\
+          \ Ethereum. Minting 1 CHEX on PulseChain requires 1 native pHEX and 1 bridged\
+          \ eHEX. Minting 1 CHEX on Ethereum requires 1 native eHEX and 1 bridged\
+          \ pHEX. \n\nCHEX is designed to track the combined value of eHEX and pHEX\
+          \ through a bi-directional, dual chain minting and redemption function.\
+          \ If CHEX on one chain becomes worth more than CHEX on the other chain,\
+          \ it creates an arbitrage opportunity to buy the lower priced one, redeem\
+          \ the HEX and bridged HEX, bridge them over, and re-mint on the other side.\n\
+          \nDue to this arbitrage cycle that keeps the price between CHEX on both\
+          \ chains relatively constant, providing liquidity between the two could\
+          \ be a high yield, low impermanent-loss liquidity strategy.\n\nThe goal\
+          \ is to have a token that roughly tracks the combined value of HEX on Ethereum\
+          \ and HEX on PulseChain. This is a solution for new onboards to the HEX\
+          \ ecosystem to gain exposure to both eHEX and pHEX with one simple swap,\
+          \ as if they were here before the fork. Additionally, this is part of a\
+          \ larger liquidity bonding and indexing solution for the upcoming {g}.",
+        font: '', spacing_above: small, spacing_below: small, data: null, background: '',
+        format: plain_text}
       name: rich_text_2
       layout_properties: {grid_position: 'MZHEXQ,HIFLBF'}
       components:
       - type: Link
-        properties: {role: body, url: hexpool.party, align: left, tooltip: '', border: '',
-          foreground: '', visible: true, text: Pool Party Stake Pools, font_size: null,
-          wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small, icon_align: left,
-          col_widths: '', spacing_below: small, italic: false, background: '', bold: false,
-          underline: false, icon: ''}
+        properties: {role: body, url: 'https://hexpool.party', align: left, tooltip: '',
+          border: '', foreground: '', visible: true, text: Pool Party Stake Pools,
+          font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small,
+          icon_align: left, col_widths: '', spacing_below: small, italic: false, background: '',
+          bold: false, underline: false, icon: ''}
         name: link_4
-        layout_properties: {slot: g}
-    - type: RichText
-      properties: {role: null, align: left, tooltip: '', enable_slots: true, border: '',
-        foreground: '', visible: true, font_size: null, content: 'HEX Combinator is
-          launching any minute now. For official updates, follow {m}, {t}, and {g}.',
-        font: '', spacing_above: small, spacing_below: small, data: null, background: '',
-        format: markdown}
-      name: rich_text_1
-      layout_properties: {grid_position: 'RYIDRD,OUCGJC'}
-      components:
-      - type: Link
-        properties: {role: body, url: 'https://twitter.com/maximus_dao', align: left,
-          tooltip: '', border: '', foreground: '', visible: true, text: '@Maximus_DAO',
-          font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small,
-          icon_align: left, col_widths: '', spacing_below: small, italic: false, background: '',
-          bold: false, underline: false, icon: ''}
-        name: link_1
-        layout_properties: {slot: m}
-      - type: Link
-        properties: {role: body, url: 'https://twitter.com/TantoNomini', align: left,
-          tooltip: '', border: '', foreground: '', visible: true, text: '@TantoNomini',
-          font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small,
-          icon_align: left, col_widths: '', spacing_below: small, italic: false, background: '',
-          bold: false, underline: false, icon: ''}
-        name: link_2
-        layout_properties: {slot: t}
-      - type: Link
-        properties: {role: body, url: 'https://twitter.com/goldk3y_', align: left,
-          tooltip: '', border: '', foreground: '', visible: true, text: '@Goldk3y_',
-          font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small,
-          icon_align: left, col_widths: '', spacing_below: small, italic: false, background: '',
-          bold: false, underline: false, icon: ''}
-        name: link_3
         layout_properties: {slot: g}
   - type: Spacer
     properties: {visible: true, spacing_above: small, spacing_below: small, height: '40',

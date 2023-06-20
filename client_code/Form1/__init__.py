@@ -148,8 +148,8 @@ class Form1(Form1Template):
       try:
         tokenSymbol = "CHEX"
         tokenDecimals = 8
-        tokenImage = "{}_/theme/CHEX%20Logo%20(100px).svg".format(anvil.server.get_app_origin())#'https://watery-decisive-guitar.anvil.app/_/api/name/maxi.jpg';
-        
+        tokenImage = "{}/_/theme/CHEX%20Logo%20(100px).svg".format(anvil.server.get_app_origin())#'https://watery-decisive-guitar.anvil.app/_/api/name/maxi.jpg';
+        print(tokenImage)
         from anvil.js.window import ethereum
         a = ethereum.request({
         'method': 'wallet_watchAsset',
@@ -163,11 +163,11 @@ class Form1(Form1Template):
           },
         },
       })
-        _=anvil.js.await_promise(a)
-        _.wait()
+        anvil.js.await_promise(a)
+        
         
         event_args['sender'].icon = 'fa:check'
-        event_args['sender'].text='{} Token Added'.format(self.symbol)
+        event_args['sender'].text='CHEX Added'
       except Exception as e:
         print(e)
 

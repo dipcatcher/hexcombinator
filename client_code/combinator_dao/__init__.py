@@ -38,7 +38,7 @@ class combinator_dao(combinator_daoTemplate):
     self.eth_balance=int(get_open_form().providers[self.chain].getBalance(ch.contract_data['CHEX']['address']).toString())
     bal = "Contract has collected {} {}".format(self.eth_balance/(10**18), self.chain)
     self.label_proceeds.text = bal
-    
+    self.label_current_dao_address.text= "Combinator DAO Address: {}".format(get_open_form().get_contract_read("CHEX", self.chain).COMBINATOR_DAO_ADDRESS())
     '''for f in dir(get_open_form().get_contract_read("CHEX", self.chain)):
       if "(" in f:
         print(f)
@@ -51,7 +51,7 @@ class combinator_dao(combinator_daoTemplate):
     if is_dao:
       return True
     else:
-      alert("Only the Combinator DAO address can run these functions.")
+      alert("Only the Combinator DAO address can run this function.")
       return False
     
   def button_update_click(self, **event_args):
@@ -64,8 +64,7 @@ class combinator_dao(combinator_daoTemplate):
 
   def button_execute_click(self, **event_args):
     """This method is called when the button is clicked"""
-    if not self.is_dao():
-      return False
+    
     try:
       self.write_contract=get_open_form().get_contract_write("CHEX")
       a = anvil.js.await_promise(self.write_contract.executeArbitrageThrottleChange())
@@ -76,8 +75,7 @@ class combinator_dao(combinator_daoTemplate):
 
   def button_flush_click(self, **event_args):
     """This method is called when the button is clicked"""
-    if not self.is_dao():
-      return False
+    
     try:
       self.write_contract=get_open_form().get_contract_write("CHEX")
       a = anvil.js.await_promise(self.write_contract.collectArbitrageThrottle())
@@ -85,5 +83,16 @@ class combinator_dao(combinator_daoTemplate):
       get_open_form().menu_click(sender=get_open_form().latest)
     except Exception as e:
       alert(e)
+
+  def button_update_copy_click(self, **event_args):
+    """This method is called when the button is clicked"""
+    try:
+      self.write_contract=get_open_form().get_contract_write("CHEX")
+      a = anvil.js.await_promise(self.write_contract.changeCombinatorDaoAddress(self.text_box_new_address.text))
+      a.wait()
+      get_open_form().menu_click(sender=get_open_form().latest)
+    except Exception as e:
+      alert(e)
+
 
 

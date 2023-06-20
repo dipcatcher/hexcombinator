@@ -56,29 +56,29 @@ components:
         layout_properties: {grid_position: 'BAIIFF,KEFHTF'}
       - type: RichText
         properties: {role: null, align: left, tooltip: '', enable_slots: true, border: '',
-          foreground: '', visible: true, font_size: null, content: "HEX Combinator\
-            \ (CHEX) is a dual chain index token backed by an equal number of eHEX\
-            \ and pHEX. Anyone can mint 1 CHEX by depositing 1 pHEX and 1 eHEX to\
-            \ the HEX Combinator trustless smart contract. At any time, 1 pHEX and\
-            \ 1 eHEX can be redeemed per CHEX token burnt through the HEX Combinator\
-            \ smart contract.\n\nHEX Combinator will be simultaneously deployed on\
-            \ both PulseChain and Ethereum. Minting 1 CHEX on PulseChain requires\
-            \ 1 native pHEX and 1 bridged eHEX. Minting 1 CHEX on Ethereum requires\
-            \ 1 native eHEX and 1 bridged pHEX. \n\nCHEX is designed to track the\
-            \ combined value of eHEX and pHEX through a bi-directional, dual chain\
-            \ minting and redemption function. If CHEX on one chain becomes worth\
-            \ more than CHEX on the other chain, it creates an arbitrage opportunity\
-            \ to buy the lower priced one, redeem the HEX and bridged HEX, bridge\
-            \ them over, and re-mint on the other side.\n\nDue to this arbitrage cycle\
-            \ that keeps the price between CHEX on both chains relatively constant,\
-            \ providing liquidity between the two could be a high yield, low impermanent-loss\
-            \ liquidity strategy.\n\nThe goal is to have a token that roughly tracks\
-            \ the combined value of HEX on Ethereum and HEX on PulseChain. This is\
-            \ a solution for new onboards to the HEX ecosystem to gain exposure to\
-            \ both eHEX and pHEX with one simple swap, as if they were here before\
-            \ the fork. Additionally, this is part of a larger liquidity bonding and\
-            \ indexing solution for the upcoming {g}.", font: '', spacing_above: small,
-          spacing_below: small, data: null, background: '', format: plain_text}
+          foreground: '', visible: true, font_size: 16, content: "HEX Combinator (CHEX)\
+            \ is a dual chain index token backed by an equal number of eHEX and pHEX.\
+            \ Anyone can mint 1 CHEX by depositing 1 pHEX and 1 eHEX to the HEX Combinator\
+            \ trustless smart contract. At any time, 1 pHEX and 1 eHEX can be redeemed\
+            \ per CHEX token burnt through the HEX Combinator smart contract.\n\n\
+            HEX Combinator will be simultaneously deployed on both PulseChain and\
+            \ Ethereum. Minting 1 CHEX on PulseChain requires 1 native pHEX and 1\
+            \ bridged eHEX. Minting 1 CHEX on Ethereum requires 1 native eHEX and\
+            \ 1 bridged pHEX. \n\nCHEX is designed to track the combined value of\
+            \ eHEX and pHEX through a bi-directional, dual chain minting and redemption\
+            \ function. If CHEX on one chain becomes worth more than CHEX on the other\
+            \ chain, it creates an arbitrage opportunity to buy the lower priced one,\
+            \ redeem the HEX and bridged HEX, bridge them over, and re-mint on the\
+            \ other side.\n\nDue to this arbitrage cycle that keeps the price between\
+            \ CHEX on both chains relatively constant, providing liquidity between\
+            \ the two could be a high yield, low impermanent-loss liquidity strategy.\n\
+            \nThe goal is to have a token that roughly tracks the combined value of\
+            \ HEX on Ethereum and HEX on PulseChain. This is a solution for new onboards\
+            \ to the HEX ecosystem to gain exposure to both eHEX and pHEX with one\
+            \ simple swap, as if they were here before the fork. Additionally, this\
+            \ is part of a larger liquidity bonding and indexing solution for the\
+            \ upcoming {g}.", font: '', spacing_above: small, spacing_below: small,
+          data: null, background: '', format: plain_text}
         name: rich_text_2_copy
         layout_properties:
           col_widths: {}

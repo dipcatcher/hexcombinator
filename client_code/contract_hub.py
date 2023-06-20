@@ -8,7 +8,7 @@
 
 
 contract_data={}
-contract_data['CHEX']={"address":""}
+contract_data['CHEX']={"address":"0xD5623Bd1eAf6A6d1564d86182197f1E88DdDEba8"}
 contract_data['CHEX']['abi']=[
 	{
 		"inputs": [],

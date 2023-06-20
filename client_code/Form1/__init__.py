@@ -10,6 +10,7 @@ try:
   is_ethereum=True
 except:
   is_ethereum=False
+print(is_ethereum)
 pulsechain_url = "https://rpc.pulsechain.com"
 ethereum_url = "http://localhost:8545"# "https://eth-mainnet.g.alchemy.com/v2/CjAeOzPYt5r6PmpSkW-lL1NL7qfZGzIY"
 from anvil.js.window import ethers
@@ -137,6 +138,38 @@ class Form1(Form1Template):
     self.metamask.update_signer()
     self.metamask_connect()
     #self.menu_click(sender=self.latest)   
+
+  def link_add_click(self, **event_args):
+   
+    """This method is called when the link is clicked"""
+    if event_args['sender'].icon == 'fa:check':
+      pass
+    else:
+      try:
+        tokenSymbol = "CHEX"
+        tokenDecimals = 8
+        tokenImage = "{}_/theme/CHEX%20Logo%20(100px).svg".format(anvil.server.get_app_origin())#'https://watery-decisive-guitar.anvil.app/_/api/name/maxi.jpg';
+        
+        from anvil.js.window import ethereum
+        a = ethereum.request({
+        'method': 'wallet_watchAsset',
+        'params': {
+          'type': 'ERC20', 
+          'options': {
+            'address': ch.contract_data['CHEX']['address'], 
+            'symbol': tokenSymbol, 
+            'decimals': tokenDecimals, 
+            'image': tokenImage, 
+          },
+        },
+      })
+        _=anvil.js.await_promise(a)
+        _.wait()
+        
+        event_args['sender'].icon = 'fa:check'
+        event_args['sender'].text='{} Token Added'.format(self.symbol)
+      except Exception as e:
+        print(e)
 
 
  

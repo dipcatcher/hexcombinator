@@ -1,0 +1,106 @@
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+components:
+- type: Label
+  properties: {role: title, align: left, tooltip: '', border: '', foreground: '',
+    visible: true, text: '', font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: label_chain
+  layout_properties: {grid_position: 'HIWDFE,PGCDFQ'}
+- type: Label
+  properties: {}
+  name: label_data
+  layout_properties: {grid_position: 'NXHOAF,DTUIQV'}
+- type: ColumnPanel
+  properties: {role: outlined-card, col_widths: '{}'}
+  name: outlined_card_1
+  layout_properties: {grid_position: 'JNUGEI,TWIHOW'}
+  components:
+  - type: Label
+    properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+      visible: true, text: Schedule Arbitrage Throttle Change, font_size: 16, font: Inter,
+      spacing_above: none, icon_align: left, spacing_below: none, italic: false, background: '',
+      bold: true, underline: false, icon: ''}
+    name: label_1
+    layout_properties: {grid_position: 'EPGIIS,EAUPOW'}
+  - type: Label
+    properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+      visible: true, text: '', font_size: 14, font: Inter, spacing_above: large, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: label_current_arb
+    layout_properties: {grid_position: 'TDVSZG,JXYUTD'}
+  - type: TextBox
+    properties: {role: outlined, align: left, hide_text: false, tooltip: '', placeholder: '',
+      border: '', enabled: true, foreground: white, visible: true, text: '', font_size: null,
+      font: Inter, spacing_above: large, type: text, spacing_below: small, italic: false,
+      background: '', bold: false, underline: false}
+    name: text_box_new_arbitrage
+    layout_properties: {grid_position: 'IUXNHB,YQXFJN'}
+  - type: Button
+    properties: {role: filled-button, align: center, tooltip: '', border: '', enabled: true,
+      foreground: white, visible: true, text: Schedule, font_size: null, font: Inter,
+      spacing_above: medium, icon_align: left, spacing_below: none, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: button_update
+    layout_properties: {grid_position: 'HEIXIL,DZYUTB'}
+    event_bindings: {click: button_update_click}
+- type: ColumnPanel
+  properties: {role: outlined-card, col_widths: '{}'}
+  name: outlined_card_2
+  layout_properties: {grid_position: 'JRWHYO,FYJTOR'}
+  components:
+  - type: Label
+    properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+      visible: true, text: Execute Scheduled Arbitrage Throttle Change, font_size: 16,
+      font: Inter, spacing_above: none, icon_align: left, spacing_below: none, italic: false,
+      background: '', bold: true, underline: false, icon: ''}
+    name: label_1_copy
+    layout_properties:
+      col_widths: {}
+      grid_position: EKOGFF,QUGPKD
+  - type: Label
+    properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+      visible: true, text: '', font_size: 14, font: Inter, spacing_above: large, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: label_execute
+    layout_properties: {grid_position: 'RYTZIC,HDQPAO'}
+  - type: Button
+    properties: {role: filled-button, align: center, tooltip: '', border: '', enabled: true,
+      foreground: white, visible: true, text: Execute Change, font_size: null, font: Inter,
+      spacing_above: large, icon_align: left, spacing_below: none, italic: false,
+      background: '', bold: true, underline: false, icon: ''}
+    name: button_execute
+    layout_properties: {grid_position: 'PZDKMF,LUXAZP'}
+    event_bindings: {click: button_execute_click}
+- type: ColumnPanel
+  properties: {role: outlined-card, col_widths: '{}'}
+  name: outlined_card_3
+  layout_properties: {grid_position: 'YPBMON,ZZSJHS'}
+  components:
+  - type: Label
+    properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+      visible: true, text: 'Collect Arbitrage Throttle ', font_size: 16, font: Inter,
+      spacing_above: none, icon_align: left, spacing_below: none, italic: false, background: '',
+      bold: true, underline: false, icon: ''}
+    name: label_2
+    layout_properties: {grid_position: 'IXWUXO,VCQSQJ'}
+  - type: Label
+    properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+      visible: true, text: '', font_size: null, font: '', spacing_above: large, icon_align: left,
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: label_proceeds
+    layout_properties: {grid_position: 'PCNJYC,IKUQPI'}
+  - type: Button
+    properties: {role: filled-button, align: center, tooltip: '', border: '', enabled: true,
+      foreground: White, visible: true, text: Transfer to Combinator DAO, font_size: null,
+      font: Inter, spacing_above: large, icon_align: left, spacing_below: none, italic: false,
+      background: '', bold: true, underline: false, icon: ''}
+    name: button_flush
+    layout_properties: {grid_position: 'LAKTAS,UDPCQO'}
+    event_bindings: {click: button_flush_click}
+is_package: true

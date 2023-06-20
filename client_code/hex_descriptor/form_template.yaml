@@ -1,0 +1,64 @@
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+components:
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: ''}
+  name: column_panel_1
+  layout_properties: {grid_position: 'SZKCWF,EDHLLZ'}
+  components:
+  - type: RichText
+    properties: {role: null, align: left, tooltip: '', enable_slots: true, border: '',
+      foreground: '', visible: true, font_size: null, content: "If you are connected\
+        \ to Ethereum:\n\n- Native HEX is the original HEX token ({a}) \n- Bridged\
+        \ HEX is \"HEX from PulseChain\" ({b})", font: '', spacing_above: small, spacing_below: small,
+      data: null, background: '', format: markdown}
+    name: rich_text_1
+    layout_properties: {grid_position: 'WPXUDQ,GGQJQE'}
+    components:
+    - type: Link
+      properties: {role: body, url: 'https://etherscan.io/address/0x46F6e9BbcCe8638b20EBBC83D33a2B5bfA9B7894',
+        align: left, tooltip: '', border: '', foreground: '', visible: true, text: 0x46F6e9...B7894,
+        font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small,
+        icon_align: left, col_widths: '', spacing_below: small, italic: false, background: '',
+        bold: false, underline: false, icon: ''}
+      name: link_2
+      layout_properties: {slot: b}
+    - type: Link
+      properties: {role: body, url: 'https://etherscan.io/token/0x2b591e99afe9f32eaa6214f7b7629768c40eeb39',
+        align: left, tooltip: '', border: '', foreground: '', visible: true, text: 0x2b591e...eeb39,
+        font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small,
+        icon_align: left, col_widths: '', spacing_below: small, italic: false, background: '',
+        bold: false, underline: false, icon: ''}
+      name: link_1
+      layout_properties: {slot: a, grid_position: 'CAJUQF,UVIDZB'}
+  - type: RichText
+    properties: {role: null, align: left, tooltip: '', enable_slots: true, border: '',
+      foreground: '', visible: true, font_size: null, content: "If you are connected\
+        \ to PulseChain:\n\n- Native HEX is the HEX copy you received at the fork\
+        \ ({a}) \n- Bridged HEX is \"HEX from Ethereum\" ({b})", font: '', spacing_above: small,
+      spacing_below: small, data: null, background: '', format: markdown}
+    name: rich_text_1_copy
+    layout_properties:
+      col_widths: {}
+      grid_position: LLYBCG,ZTNNEL
+    components:
+    - type: Link
+      properties: {role: body, url: 'https://scan.pulsechain.com/address/0x57fde0a71132198BBeC939B98976993d8D89D225',
+        align: left, tooltip: '', border: '', foreground: '', visible: true, text: 0x57fde0...9D225,
+        font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small,
+        icon_align: left, col_widths: '', spacing_below: small, italic: false, background: '',
+        bold: false, underline: false, icon: ''}
+      name: link_2_copy
+      layout_properties: {slot: b}
+    - type: Link
+      properties: {role: body, url: 'https://scan.pulsechain.com/address/0x2b591e99afE9f32eAA6214f7B7629768c40Eeb39',
+        align: left, tooltip: '', border: '', foreground: '', visible: true, text: 0x2b591e...eeb39,
+        font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small,
+        icon_align: left, col_widths: '', spacing_below: small, italic: false, background: '',
+        bold: false, underline: false, icon: ''}
+      name: link_1_copy
+      layout_properties: {slot: a, grid_position: 'CAJUQF,UVIDZB'}
+is_package: true

@@ -1,0 +1,23 @@
+dependencies:
+- app_id: CY6SHX5TPGTSZ6UY
+  version: {dev: false}
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
+startup: {type: form, module: landing_page}
+package_name: HEXC
+allow_embedding: false
+name: Clone of Clone of HEX Combinator
+runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+metadata: {title: HEX Combinator, logo_img: 'asset:check link image.png', description: 'HEX
+    Combinator is a trustless, dual-chain HEX index tracking the combined eHEX+pHEX
+    value. Mint CHEX on Ethereum and PulseChain'}
+startup_form: null
+native_deps: {head_html: '<link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">'}
+renamed: true

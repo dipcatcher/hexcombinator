@@ -1,0 +1,216 @@
+is_package: true
+container:
+  type: HtmlTemplate
+  properties: {html: '@theme:standard-page.html'}
+components:
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: content_panel
+  layout_properties: {slot: default}
+  components:
+  - type: ColumnPanel
+    properties: {role: content-contain, tooltip: '', border: '', foreground: '', visible: true,
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+      spacing_below: small, background: ''}
+    name: panel_manage
+    layout_properties: {grid_position: 'DSHTVY,QWPLUL'}
+    components: []
+  - type: ColumnPanel
+    properties: {role: content-contain, tooltip: '', border: '', foreground: '', visible: true,
+      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+      spacing_below: small, background: ''}
+    name: column_panel_1
+    layout_properties: {grid_position: 'MJBTAB,FSLFFW'}
+    components:
+    - type: ColumnPanel
+      properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+        wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+        spacing_below: small, background: ''}
+      name: info_container
+      layout_properties: {grid_position: 'ZCEBZW,JBBJLX'}
+      components:
+      - type: Spacer
+        properties: {visible: true, spacing_above: small, spacing_below: small, height: '16',
+          tooltip: ''}
+        name: spacer_2
+        layout_properties: {grid_position: 'LIIKNG,OPXWXB'}
+      - type: Label
+        properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+          visible: true, text: 'What is CHEX?', font_size: 16, font: Inter, spacing_above: small,
+          icon_align: left, spacing_below: none, italic: false, background: '', bold: true,
+          underline: false, icon: ''}
+        name: label_1_copy_2
+        layout_properties:
+          col_widths: {}
+          grid_position: YPGUVA,XXCCNB
+      - type: Label
+        properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+          visible: true, text: CHEX is a trustless HEX index on both Ethereum and PulseChain. CHEX is an ERC20 and PRC20 that is always backed by 1 pHEX and 1 eHEX.,
+          font_size: 14, font: Inter, spacing_above: small, icon_align: left, spacing_below: small,
+          italic: false, background: '', bold: false, underline: false, icon: ''}
+        name: label_1_copy_3
+        layout_properties:
+          col_widths: {}
+          grid_position: KCIXFA,GVNCEO
+      - type: Label
+        properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+          visible: true, text: 'What problem does CHEX solve?', font_size: 16, font: Inter,
+          spacing_above: large, icon_align: left, spacing_below: none, italic: false,
+          background: '', bold: true, underline: false, icon: ''}
+        name: label_1_copy_4
+        layout_properties:
+          col_widths: {}
+          grid_position: YVDWTZ,WHPBXA
+      - type: Label
+        properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+          visible: true, text: 'CHEX is an onboarding solution for HEX, allowing people
+            to buy an equal amount of both eHEX and pHEX in a single transaction.
+
+
+            CHEX solves the fracturing of demand problem the HEX has faced since the
+            launch of PulseChain.', font_size: 14, font: Inter, spacing_above: small,
+          icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+          underline: false, icon: ''}
+        name: label_1_copy_9
+        layout_properties:
+          col_widths: {}
+          grid_position: YXODSD,LWAAAP
+      - type: Label
+        properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+          visible: true, text: 'How does CHEX work?', font_size: 16, font: Inter,
+          spacing_above: large, icon_align: left, spacing_below: none, italic: false,
+          background: '', bold: true, underline: false, icon: ''}
+        name: label_1_copy_5
+        layout_properties:
+          col_widths: {}
+          grid_position: CKSRST,QROWOI
+    - type: Label
+      properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+        visible: true, text: 'People can mint CHEX by depositing an equal amount of
+          pHEX and eHEX into the smart contract. Once minted, every CHEX is backed
+          by 1 pHEX and 1 eHEX which can be redeemed at any time by burning CHEX through
+          the smart contract.
+
+
+          Being a PRC20 and ERC20 token, CHEX can be traded on any decentralized exchange.',
+        font_size: 14, font: Inter, spacing_above: small, icon_align: left, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false, icon: ''}
+      name: label_1_copy_10
+      layout_properties:
+        col_widths: {}
+        grid_position: TFPLMH,RDQAGN
+    - type: Label
+      properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+        visible: true, text: 'What is CHEX for?', font_size: 16, font: Inter, spacing_above: large,
+        icon_align: left, spacing_below: none, italic: false, background: '', bold: true,
+        underline: false, icon: ''}
+      name: label_1_copy_6
+      layout_properties:
+        col_widths: {}
+        grid_position: GIRKJR,ETPUAD
+    - type: Label
+      properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+        visible: true, text: CHEX is an index that is always backed by 1 pHEX and 1 eHEX.,
+        font_size: 14, font: Inter, spacing_above: small, icon_align: left, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false, icon: ''}
+      name: label_1_copy_11
+      layout_properties:
+        col_widths: {}
+        grid_position: IYKDIW,OVOWOV
+    - type: Label
+      properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+        visible: true, text: 'What is CHEX for?', font_size: 16, font: Inter, spacing_above: large,
+        icon_align: left, spacing_below: none, italic: false, background: '', bold: true,
+        underline: false, icon: ''}
+      name: label_1_copy_7
+      layout_properties:
+        col_widths: {}
+        grid_position: WOHWPH,PAARYR
+    - type: Label
+      properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+        visible: true, text: CHEX is an index that is always backed by 1 pHEX and 1 eHEX.,
+        font_size: 14, font: Inter, spacing_above: small, icon_align: left, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false, icon: ''}
+      name: label_1_copy_12
+      layout_properties:
+        col_widths: {}
+        grid_position: YLFFSG,JXABJE
+    - type: Label
+      properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+        visible: true, text: 'What is CHEX for?', font_size: 16, font: Inter, spacing_above: large,
+        icon_align: left, spacing_below: none, italic: false, background: '', bold: true,
+        underline: false, icon: ''}
+      name: label_1_copy_8
+      layout_properties:
+        col_widths: {}
+        grid_position: XUJLEV,XCJSMD
+    - type: Label
+      properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
+        visible: true, text: CHEX is an index that is always backed by 1 pHEX and 1 eHEX.,
+        font_size: 14, font: Inter, spacing_above: small, icon_align: left, spacing_below: small,
+        italic: false, background: '', bold: false, underline: false, icon: ''}
+      name: label_1_copy_13
+      layout_properties:
+        col_widths: {}
+        grid_position: TNTLHO,GOEEEW
+  - type: Spacer
+    properties: {height: 32}
+    name: spacer_3
+    layout_properties: {grid_position: 'SYSMGH,LDSPXZ'}
+- type: ColumnPanel
+  properties: {col_widths: '{}'}
+  name: column_panel_2
+  layout_properties: {slot: left-nav}
+  components:
+  - type: Link
+    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Mint CHEX, font_size: null, wrap_on: mobile, font: '',
+      col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: link_mint
+    layout_properties: {grid_position: 'FBJAXP,IOIRKP'}
+    event_bindings: {click: menu_click}
+  - type: Link
+    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Redeem CHEX, font_size: null, wrap_on: mobile, font: '',
+      col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: link_redeem
+    layout_properties: {grid_position: 'QCYJCU,QBCGBA'}
+    event_bindings: {click: menu_click}
+  - type: Link
+    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Combinator DAO Dashboard, font_size: null, wrap_on: mobile,
+      font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
+      spacing_below: small, italic: false, background: '', bold: false, underline: false,
+      icon: ''}
+    name: link_combinator
+    layout_properties: {grid_position: 'LEJSQC,YXFISC'}
+    event_bindings: {click: menu_click}
+- type: Image
+  properties: {role: null, vertical_align: center, height: '48', tooltip: '', border: '',
+    foreground: '', visible: true, display_mode: shrink_to_fit, spacing_above: small,
+    source: _/theme/chex%20logo.svg, spacing_below: small, background: '', horizontal_align: center}
+  name: image_1
+  layout_properties: {slot: title, grid_position: 'HDBLJQ,IDEVCV'}
+- type: FlowPanel
+  properties: {role: body, spacing: none, align: left, tooltip: '', border: '', foreground: '',
+    visible: true, spacing_above: small, spacing_below: small, background: ''}
+  name: flow_panel_1
+  layout_properties: {slot: nav-right}
+  components:
+  - type: form:CY6SHX5TPGTSZ6UY:MetaMask
+    properties: {}
+    name: metamask
+    layout_properties: {slot: b, width: 158.562}
+    event_bindings: {connect: metamask_connect}
+  - type: Link
+    properties: {role: body, url: '', align: left, tooltip: '', border: '', foreground: '',
+      visible: false, text: ETH, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
+      spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
+      italic: false, background: '', bold: false, underline: false, icon: ''}
+    name: link_switch
+    layout_properties: {slot: a}
+    event_bindings: {click: link_switch_click}

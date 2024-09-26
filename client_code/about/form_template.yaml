@@ -1,105 +1,91 @@
-container: {type: ColumnPanel}
 components:
-- type: ColumnPanel
-  properties: {col_widths: '{}'}
-  name: content_panel_copy
-  layout_properties:
-    col_widths: {}
-    grid_position: YFMVKC,YEEZKO
-  components:
-  - type: ColumnPanel
-    properties: {role: content-contain, tooltip: '', border: '', foreground: '', visible: true,
-      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
-      spacing_below: small, background: ''}
-    name: column_panel_2_copy
-    layout_properties: {grid_position: 'QWKSRY,BDHNLT'}
-    components:
-    - type: ColumnPanel
-      properties: {role: tonal-card, tooltip: '', border: '', foreground: '', visible: true,
-        wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
-        spacing_below: small, background: black}
-      name: outlined_card_1
-      layout_properties: {grid_position: 'CRNNHF,DKKKOQ'}
-      components:
-      - type: Image
-        properties: {role: null, vertical_align: center, height: '200', tooltip: '',
-          border: '', foreground: '', visible: true, display_mode: shrink_to_fit,
-          spacing_above: small, source: _/theme/CHEX%20Logo%20(100px).svg, spacing_below: large,
-          background: '', horizontal_align: center}
+- components:
+  - components:
+    - components:
+      - layout_properties: {grid_position: 'MUATGF,AGHOCO'}
         name: image_1_copy
-        layout_properties: {grid_position: 'MUATGF,AGHOCO'}
-      - type: Label
-        properties: {role: title, align: center, tooltip: '', border: '', foreground: '',
-          visible: true, text: CHEX, font_size: 56, font: Inter, spacing_above: medium,
-          icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
-          underline: false, icon: ''}
+        properties: {background: '', border: '', display_mode: shrink_to_fit, foreground: '', height: '200', horizontal_align: center, role: null, source: _/theme/CHEX%20Logo%20(100px).svg, spacing_above: small, spacing_below: large, tooltip: '', vertical_align: center, visible: true}
+        type: Image
+      - layout_properties: {grid_position: 'ZTZEMZ,UDYGLT'}
         name: label_1
-        layout_properties: {grid_position: 'ZTZEMZ,UDYGLT'}
-      - type: Label
-        properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
-          visible: true, text: 'The trustless cross-chain
-
-            HEX index.', font_size: 24, font: Inter, spacing_above: small, icon_align: left,
-          spacing_below: small, italic: false, background: '', bold: false, underline: false,
-          icon: ''}
+        properties: {align: center, background: '', bold: true, border: '', font: Inter, font_size: 56, foreground: '', icon: '', icon_align: left, italic: false, role: title, spacing_above: medium, spacing_below: small, text: CHEX, tooltip: '', underline: false, visible: true}
+        type: Label
+      - layout_properties: {grid_position: 'ONDZZV,WYREKT'}
         name: label_2
-        layout_properties: {grid_position: 'ONDZZV,WYREKT'}
-      - type: FlowPanel
-        properties: {role: null, spacing: medium, align: center, tooltip: '', border: '',
-          foreground: '', visible: true, spacing_above: small, spacing_below: small,
-          background: ''}
-        name: flow_panel_1
-        layout_properties: {grid_position: 'MESBWL,VKKDLN'}
-        components:
-        - type: Button
-          properties: {role: filled-button, align: center, tooltip: '', border: '',
-            enabled: true, foreground: '', visible: true, text: Mint CHEX, font_size: null,
-            font: '', spacing_above: small, icon_align: left, spacing_below: small,
-            italic: false, background: '', bold: false, underline: false, icon: ''}
-          name: button_1
+        properties:
+          align: center
+          background: ''
+          bold: false
+          border: ''
+          font: Inter
+          font_size: 24
+          foreground: ''
+          icon: ''
+          icon_align: left
+          italic: false
+          role: null
+          spacing_above: small
+          spacing_below: small
+          text: |-
+            The trustless cross-chain
+            HEX index.
+          tooltip: ''
+          underline: false
+          visible: true
+        type: Label
+      - components:
+        - event_bindings: {click: button_1_click}
           layout_properties: {grid_position: 'XZKWZU,UDUFUQ'}
-          event_bindings: {click: button_1_click}
-      - type: Spacer
-        properties: {visible: true, spacing_above: small, spacing_below: small, height: '16',
-          tooltip: ''}
+          name: button_1
+          properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: filled-button, spacing_above: small, spacing_below: small, text: Mint CHEX, tooltip: '', underline: false, visible: true}
+          type: Button
+        layout_properties: {grid_position: 'MESBWL,VKKDLN'}
+        name: flow_panel_1
+        properties: {align: center, background: '', border: '', foreground: '', role: null, spacing: medium, spacing_above: small, spacing_below: small, tooltip: '', visible: true}
+        type: FlowPanel
+      - layout_properties: {grid_position: 'BAIIFF,KEFHTF'}
         name: spacer_2_copy
-        layout_properties: {grid_position: 'BAIIFF,KEFHTF'}
-      - type: RichText
-        properties: {role: null, align: left, tooltip: '', enable_slots: true, border: '',
-          foreground: '', visible: true, font_size: 16, content: "HEX Combinator (CHEX)\
-            \ is a dual chain index token backed by an equal number of eHEX and pHEX.\
-            \ Anyone can mint 1 CHEX by depositing 1 pHEX and 1 eHEX to the HEX Combinator\
-            \ trustless smart contract. At any time, 1 pHEX and 1 eHEX can be redeemed\
-            \ per CHEX token burnt through the HEX Combinator smart contract.\n\n\
-            HEX Combinator will be simultaneously deployed on both PulseChain and\
-            \ Ethereum. Minting 1 CHEX on PulseChain requires 1 native pHEX and 1\
-            \ bridged eHEX. Minting 1 CHEX on Ethereum requires 1 native eHEX and\
-            \ 1 bridged pHEX. \n\nCHEX is designed to track the combined value of\
-            \ eHEX and pHEX through a bi-directional, dual chain minting and redemption\
-            \ function. If CHEX on one chain becomes worth more than CHEX on the other\
-            \ chain, it creates an arbitrage opportunity to buy the lower priced one,\
-            \ redeem the HEX and bridged HEX, bridge them over, and re-mint on the\
-            \ other side.\n\nDue to this arbitrage cycle that keeps the price between\
-            \ CHEX on both chains relatively constant, providing liquidity between\
-            \ the two could be a high yield, low impermanent-loss liquidity strategy.\n\
-            \nThe goal is to have a token that roughly tracks the combined value of\
-            \ HEX on Ethereum and HEX on PulseChain. This is a solution for new onboards\
-            \ to the HEX ecosystem to gain exposure to both eHEX and pHEX with one\
-            \ simple swap, as if they were here before the fork. Additionally, this\
-            \ is part of a larger liquidity bonding and indexing solution for the\
-            \ upcoming {g}.", font: '', spacing_above: small, spacing_below: small,
-          data: null, background: '', format: plain_text}
-        name: rich_text_2_copy
+        properties: {height: '16', spacing_above: small, spacing_below: small, tooltip: '', visible: true}
+        type: Spacer
+      - components:
+        - layout_properties: {slot: g}
+          name: link_4_copy
+          properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: body, spacing_above: small, spacing_below: small, text: Pool Party Stake Pools, tooltip: '', underline: false, url: 'https://hexpool.party', visible: true, wrap_on: mobile}
+          type: Link
         layout_properties:
           col_widths: {}
           grid_position: FXFFJM,QEYKMI
-        components:
-        - type: Link
-          properties: {role: body, url: 'https://hexpool.party', align: left, tooltip: '',
-            border: '', foreground: '', visible: true, text: Pool Party Stake Pools,
-            font_size: null, wrap_on: mobile, font: '', col_spacing: medium, spacing_above: small,
-            icon_align: left, col_widths: '', spacing_below: small, italic: false,
-            background: '', bold: false, underline: false, icon: ''}
-          name: link_4_copy
-          layout_properties: {slot: g}
+        name: rich_text_2_copy
+        properties:
+          align: left
+          background: ''
+          border: ''
+          content: "HEX Combinator (CHEX) is a dual chain index token backed by an equal number of eHEX and pHEX. Anyone can mint 1 CHEX by depositing 1 pHEX and 1 eHEX to the HEX Combinator trustless smart contract. At any time, 1 pHEX and 1 eHEX can be redeemed per CHEX token burnt through the HEX Combinator smart contract.\n\nHEX Combinator will be simultaneously deployed on both PulseChain and Ethereum. Minting 1 CHEX on PulseChain requires 1 native pHEX and 1 bridged eHEX. Minting 1 CHEX on Ethereum requires 1 native eHEX and 1 bridged pHEX. \n\nCHEX is designed to track the combined value of eHEX and pHEX through a bi-directional, dual chain minting and redemption function. If CHEX on one chain becomes worth more than CHEX on the other chain, it creates an arbitrage opportunity to buy the lower priced one, redeem the HEX and bridged HEX, bridge them over, and re-mint on the other side.\n\nDue to this arbitrage cycle that keeps the price between CHEX on both chains relatively constant, providing liquidity between the two could be a high yield, low impermanent-loss liquidity strategy.\n\nThe goal is to have a token that roughly tracks the combined value of HEX on Ethereum and HEX on PulseChain. This is a solution for new onboards to the HEX ecosystem to gain exposure to both eHEX and pHEX with one simple swap, as if they were here before the fork. Additionally, this is part of a larger liquidity bonding and indexing solution for the upcoming {g}."
+          data: null
+          enable_slots: true
+          font: ''
+          font_size: 16
+          foreground: ''
+          format: plain_text
+          role: null
+          spacing_above: small
+          spacing_below: small
+          tooltip: ''
+          visible: true
+        type: RichText
+      layout_properties: {grid_position: 'CRNNHF,DKKKOQ'}
+      name: outlined_card_1
+      properties: {background: black, border: '', col_spacing: medium, col_widths: '{}', foreground: '', role: tonal-card, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: mobile}
+      type: ColumnPanel
+    layout_properties: {grid_position: 'QWKSRY,BDHNLT'}
+    name: column_panel_2_copy
+    properties: {background: '', border: '', col_spacing: medium, col_widths: '{}', foreground: '', role: content-contain, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: mobile}
+    type: ColumnPanel
+  layout_properties:
+    col_widths: {}
+    grid_position: YFMVKC,YEEZKO
+  name: content_panel_copy
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
+container: {type: ColumnPanel}
 is_package: true

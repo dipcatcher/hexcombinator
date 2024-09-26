@@ -1,16 +1,13 @@
-is_package: true
-container:
-  type: HtmlTemplate
-  properties: {html: '@theme:standard-page.html'}
 components:
-- type: FlowPanel
-  properties: {}
+- layout_properties: {slot: nav-right}
   name: navbar_links
-  layout_properties: {slot: nav-right}
-- type: Image
-  properties: {role: null, vertical_align: center, height: '56', tooltip: '', border: '',
-    foreground: '', visible: true, display_mode: shrink_to_fit, spacing_above: small,
-    source: _/theme/CHEX%20Logo%20(100px).svg, spacing_below: small, background: '',
-    horizontal_align: center}
+  properties: {}
+  type: FlowPanel
+- layout_properties: {slot: top-left-btn}
   name: image_2
-  layout_properties: {slot: top-left-btn}
+  properties: {background: '', border: '', display_mode: shrink_to_fit, foreground: '', height: '56', horizontal_align: center, role: null, source: _/theme/CHEX%20Logo%20(100px).svg, spacing_above: small, spacing_below: small, tooltip: '', vertical_align: center, visible: true}
+  type: Image
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

@@ -1,96 +1,68 @@
-is_package: true
-container:
-  type: HtmlTemplate
-  properties: {html: '@theme:standard-page.html'}
 components:
-- type: ColumnPanel
-  properties: {col_widths: '{}'}
-  name: content_panel
-  layout_properties: {slot: default}
-  components:
-  - type: ColumnPanel
-    properties: {role: content-contain, tooltip: '', border: '', foreground: '', visible: true,
-      wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
-      spacing_below: small, background: ''}
-    name: panel_manage
+- components:
+  - components: []
     layout_properties: {grid_position: 'DSHTVY,QWPLUL'}
-    components: []
-  - type: Spacer
-    properties: {height: 32}
+    name: panel_manage
+    properties: {background: '', border: '', col_spacing: medium, col_widths: '{}', foreground: '', role: content-contain, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: mobile}
+    type: ColumnPanel
+  - layout_properties: {grid_position: 'SYSMGH,LDSPXZ'}
     name: spacer_3
-    layout_properties: {grid_position: 'SYSMGH,LDSPXZ'}
-- type: ColumnPanel
+    properties: {height: 32}
+    type: Spacer
+  layout_properties: {slot: default}
+  name: content_panel
   properties: {col_widths: '{}'}
-  name: column_panel_2
-  layout_properties: {slot: left-nav}
-  components:
-  - type: Link
-    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Mint CHEX, font_size: null, wrap_on: mobile, font: '',
-      col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
-      spacing_below: small, italic: false, background: '', bold: false, underline: false,
-      icon: ''}
-    name: link_mint
+  type: ColumnPanel
+- components:
+  - event_bindings: {click: menu_click}
     layout_properties: {grid_position: 'FBJAXP,IOIRKP'}
-    event_bindings: {click: menu_click}
-  - type: Link
-    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Redeem CHEX, font_size: null, wrap_on: mobile, font: '',
-      col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
-      spacing_below: small, italic: false, background: '', bold: false, underline: false,
-      icon: ''}
-    name: link_redeem
+    name: link_mint
+    properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Mint CHEX, tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+    type: Link
+  - event_bindings: {click: menu_click}
     layout_properties: {grid_position: 'QCYJCU,QBCGBA'}
-    event_bindings: {click: menu_click}
-  - type: Link
-    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Combinator DAO Dashboard, font_size: null, wrap_on: mobile,
-      font: '', col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
-      spacing_below: small, italic: false, background: '', bold: false, underline: false,
-      icon: ''}
-    name: link_combinator
+    name: link_redeem
+    properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Redeem CHEX, tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+    type: Link
+  - event_bindings: {click: menu_click}
     layout_properties: {grid_position: 'LEJSQC,YXFISC'}
-    event_bindings: {click: menu_click}
-  - type: Link
-    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: Add CHEX to Wallet, font_size: null, wrap_on: mobile, font: '',
-      col_spacing: medium, spacing_above: small, icon_align: left, col_widths: '',
-      spacing_below: small, italic: false, background: '', bold: false, underline: false,
-      icon: ''}
-    name: link_add
+    name: link_combinator
+    properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Combinator DAO Dashboard, tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+    type: Link
+  - event_bindings: {click: link_add_click}
     layout_properties: {grid_position: 'GWXKHA,SZFYIH'}
-    event_bindings: {click: link_add_click}
-  - type: Link
-    properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: true, text: About, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
-      spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
-      italic: false, background: '', bold: false, underline: false, icon: ''}
-    name: link_about
+    name: link_add
+    properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Add CHEX to Wallet, tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+    type: Link
+  - event_bindings: {click: menu_click}
     layout_properties: {grid_position: 'MAQNPE,YCXUEB'}
-    event_bindings: {click: menu_click}
-- type: Image
-  properties: {role: null, vertical_align: center, height: '48', tooltip: '', border: '',
-    foreground: '', visible: true, display_mode: shrink_to_fit, spacing_above: small,
-    source: _/theme/CHEX%20Logo%20(100px).svg, spacing_below: small, background: '',
-    horizontal_align: center}
+    name: link_about
+    properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: About, tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+    type: Link
+  layout_properties: {slot: left-nav}
+  name: column_panel_2
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
+- layout_properties: {grid_position: 'HDBLJQ,IDEVCV', slot: title}
   name: image_1
-  layout_properties: {slot: title, grid_position: 'HDBLJQ,IDEVCV'}
-- type: FlowPanel
-  properties: {role: body, spacing: none, align: left, tooltip: '', border: '', foreground: '',
-    visible: true, spacing_above: small, spacing_below: small, background: ''}
-  name: flow_panel_1
-  layout_properties: {slot: nav-right}
-  components:
-  - type: form:CY6SHX5TPGTSZ6UY:MetaMask
-    properties: {}
-    name: metamask
+  properties: {background: '', border: '', display_mode: shrink_to_fit, foreground: '', height: '48', horizontal_align: center, role: null, source: _/theme/CHEX%20Logo%20(100px).svg, spacing_above: small, spacing_below: small, tooltip: '', vertical_align: center, visible: true}
+  type: Image
+- components:
+  - event_bindings: {connect: metamask_connect}
     layout_properties: {slot: b, width: 158.562}
-    event_bindings: {connect: metamask_connect}
-  - type: Link
-    properties: {role: body, url: '', align: left, tooltip: '', border: '', foreground: '',
-      visible: false, text: ETH, font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
-      spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
-      italic: false, background: '', bold: false, underline: false, icon: ''}
-    name: link_switch
+    name: metamask
+    properties: {}
+    type: form:CY6SHX5TPGTSZ6UY:MetaMask
+  - event_bindings: {click: link_switch_click}
     layout_properties: {slot: a}
-    event_bindings: {click: link_switch_click}
+    name: link_switch
+    properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: body, spacing_above: small, spacing_below: small, text: ETH, tooltip: '', underline: false, url: '', visible: false, wrap_on: mobile}
+    type: Link
+  layout_properties: {slot: nav-right}
+  name: flow_panel_1
+  properties: {align: left, background: '', border: '', foreground: '', role: body, spacing: none, spacing_above: small, spacing_below: small, tooltip: '', visible: true}
+  type: FlowPanel
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

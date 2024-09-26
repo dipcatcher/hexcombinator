@@ -1,134 +1,87 @@
-container:
-  type: ColumnPanel
-  event_bindings: {show: form_show}
 components:
-- type: ColumnPanel
-  properties: {role: card1, tooltip: '', border: '', foreground: '', visible: true,
-    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
-    spacing_below: small, background: ''}
-  name: mint_card
+- components:
+  - layout_properties: {grid_position: 'ILNSVL,GIAKVM'}
+    name: label_1
+    properties: {align: left, background: '', bold: true, border: '', font: Inter, font_size: 21, foreground: white, icon: '', icon_align: left, italic: false, role: body, spacing_above: small, spacing_below: small, text: Redeem CHEX, tooltip: '', underline: false, visible: true}
+    type: Label
+  - components:
+    - event_bindings: {click: link_1_click}
+      layout_properties: {slot: a}
+      name: link_1
+      properties: {align: left, background: '', bold: false, border: '', col_spacing: medium, col_widths: '', font: '', font_size: null, foreground: '', icon: 'fa:question-circle', icon_align: left, italic: false, role: body, spacing_above: small, spacing_below: small, text: ' ', tooltip: '', underline: false, url: '', visible: true, wrap_on: mobile}
+      type: Link
+    layout_properties: {grid_position: 'FTFKQE,XCTOLQ'}
+    name: rich_text_1
+    properties: {align: left, background: '', border: '', content: 'Redeem 1 Native HEX and 1 Bridged HEX per each CHEX burnt. {a}', data: null, enable_slots: true, font: '', font_size: null, foreground: '', format: plain_text, role: null, spacing_above: small, spacing_below: small, tooltip: '', visible: true}
+    type: RichText
+  - layout_properties:
+      col_widths: {}
+      grid_position: SAAPHK,IZUFMT
+    name: label_4_copy
+    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: 16, foreground: '#8E8E93', icon: '', icon_align: left, italic: false, role: body, spacing_above: small, spacing_below: small, text: Your Current Balances, tooltip: '', underline: false, visible: true}
+    type: Label
+  - components:
+    - layout_properties: {col_xs: 0, column: FEYCNU, grid_position: 'HOOTON,UTGZUS', row: KVADEO, width: 157, width_xs: 8}
+      name: label_4
+      properties: {align: left, background: '', bold: true, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: body, spacing_above: medium, spacing_below: small, text: Native HEX, tooltip: '', underline: false, visible: true}
+      type: Label
+    - layout_properties: {col_xs: 8, column: BFSMDM, grid_position: 'HOOTON,GDWTKS', row: KVADEO, width: 219.328, width_xs: 4}
+      name: label_native_hex_balance
+      properties: {align: right, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: body, spacing_above: medium, spacing_below: small, text: 0 HEX, tooltip: '', underline: false, visible: true}
+      type: Label
+    layout_properties: {grid_position: 'SZUUAR,TTRLEI'}
+    name: data_row_panel_1
+    properties: {}
+    type: DataRowPanel
+  - components:
+    - layout_properties: {col_xs: 0, column: FEYCNU, grid_position: 'PYFHCJ,ATPUOW', row: JKYYRD, width: 157, width_xs: 7}
+      name: label_6
+      properties: {align: left, background: '', bold: true, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: body, spacing_above: medium, spacing_below: small, text: Bridged HEX, tooltip: '', underline: false, visible: true}
+      type: Label
+    - layout_properties: {col_xs: 8, column: BFSMDM, grid_position: 'PYFHCJ,LTDEAF', row: JKYYRD, width: 219.328, width_xs: 4}
+      name: label_bridged_hex_balance
+      properties: {align: right, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: body, spacing_above: medium, spacing_below: small, text: 0 HEX, tooltip: '', underline: false, visible: true}
+      type: Label
+    layout_properties: {grid_position: 'RVRUKV,EKIJFE'}
+    name: data_row_panel_2
+    properties: {}
+    type: DataRowPanel
+  - components:
+    - layout_properties: {col_xs: 0, column: FEYCNU, grid_position: 'CPABSR,SEJZIH', row: TKOCCF, width: 392.328, width_xs: 7}
+      name: label_5
+      properties: {align: left, background: '', bold: true, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: body, spacing_above: medium, spacing_below: large, text: CHEX, tooltip: '', underline: false, visible: true}
+      type: Label
+    - layout_properties: {col_xs: 9, column: BFSMDM, grid_position: 'CPABSR,KCLWIA', row: TKOCCF, width: 151, width_xs: 3}
+      name: label_chex_balance
+      properties: {align: right, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: body, spacing_above: medium, spacing_below: large, text: 0 CHEX, tooltip: '', underline: false, visible: true}
+      type: Label
+    layout_properties: {grid_position: 'PHKZPE,ETBQOF'}
+    name: data_row_panel_3
+    properties: {align: left, auto_display_data: true, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', italic: false, item: null, role: underline, spacing_above: none, spacing_below: none, tooltip: '', underline: false, visible: true}
+    type: DataRowPanel
+  - layout_properties:
+      col_widths: {}
+      grid_position: BLUBNC,EJNBDA
+    name: label_4_copy_2
+    properties: {align: left, background: '', bold: false, border: '', font: '', font_size: 16, foreground: '#8E8E93', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: Enter CHEX Amount, tooltip: '', underline: false, visible: true}
+    type: Label
+  - event_bindings: {change_box: textbox_input_change}
+    layout_properties: {grid_position: 'ERXIPK,ATIWTG'}
+    name: textbox_input
+    properties: {}
+    type: form:chex_text_box
+  - event_bindings: {click: button_redeem_click}
+    layout_properties: {grid_position: 'TMHQCY,WHNQPY'}
+    name: button_redeem
+    properties: {align: center, background: '', bold: false, border: '', enabled: false, font: Inter, font_size: null, foreground: white, icon: '', icon_align: left, italic: false, role: filled-button, spacing_above: large, spacing_below: small, text: Redeem, tooltip: '', underline: false, visible: true}
+    type: Button
   layout_properties:
     col_widths: {}
     grid_position: BJWTVI,TPOTOO
-  components:
-  - type: Label
-    properties: {role: body, align: left, tooltip: '', border: '', foreground: white,
-      visible: true, text: Redeem CHEX, font_size: 21, font: Inter, spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
-      underline: false, icon: ''}
-    name: label_1
-    layout_properties: {grid_position: 'ILNSVL,GIAKVM'}
-  - type: RichText
-    properties: {role: null, align: left, tooltip: '', enable_slots: true, border: '',
-      foreground: '', visible: true, font_size: null, content: 'Redeem 1 Native HEX
-        and 1 Bridged HEX per each CHEX burnt. {a}', font: '', spacing_above: small,
-      spacing_below: small, data: null, background: '', format: plain_text}
-    name: rich_text_1
-    layout_properties: {grid_position: 'FTFKQE,XCTOLQ'}
-    components:
-    - type: Link
-      properties: {role: body, url: '', align: left, tooltip: '', border: '', foreground: '',
-        visible: true, text: ' ', font_size: null, wrap_on: mobile, font: '', col_spacing: medium,
-        spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
-        italic: false, background: '', bold: false, underline: false, icon: 'fa:question-circle'}
-      name: link_1
-      layout_properties: {slot: a}
-      event_bindings: {click: link_1_click}
-  - type: Label
-    properties: {role: body, align: left, tooltip: '', border: '', foreground: '#8E8E93',
-      visible: true, text: Your Current Balances, font_size: 16, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_4_copy
-    layout_properties:
-      col_widths: {}
-      grid_position: SAAPHK,IZUFMT
-  - type: DataRowPanel
-    properties: {}
-    name: data_row_panel_1
-    layout_properties: {grid_position: 'SZUUAR,TTRLEI'}
-    components:
-    - type: Label
-      properties: {role: body, align: left, tooltip: '', border: '', foreground: '',
-        visible: true, text: Native HEX, font_size: null, font: '', spacing_above: medium,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
-        underline: false, icon: ''}
-      name: label_4
-      layout_properties: {row: KVADEO, width_xs: 8, col_xs: 0, width: 157, grid_position: 'HOOTON,UTGZUS',
-        column: FEYCNU}
-    - type: Label
-      properties: {role: body, align: right, tooltip: '', border: '', foreground: '',
-        visible: true, text: 0 HEX, font_size: null, font: '', spacing_above: medium,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
-      name: label_native_hex_balance
-      layout_properties: {row: KVADEO, width_xs: 4, col_xs: 8, width: 219.328, grid_position: 'HOOTON,GDWTKS',
-        column: BFSMDM}
-  - type: DataRowPanel
-    properties: {}
-    name: data_row_panel_2
-    layout_properties: {grid_position: 'RVRUKV,EKIJFE'}
-    components:
-    - type: Label
-      properties: {role: body, align: left, tooltip: '', border: '', foreground: '',
-        visible: true, text: Bridged HEX, font_size: null, font: '', spacing_above: medium,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
-        underline: false, icon: ''}
-      name: label_6
-      layout_properties: {row: JKYYRD, width_xs: 7, col_xs: 0, width: 157, grid_position: 'PYFHCJ,ATPUOW',
-        column: FEYCNU}
-    - type: Label
-      properties: {role: body, align: right, tooltip: '', border: '', foreground: '',
-        visible: true, text: 0 HEX, font_size: null, font: '', spacing_above: medium,
-        icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
-      name: label_bridged_hex_balance
-      layout_properties: {row: JKYYRD, width_xs: 4, col_xs: 8, width: 219.328, grid_position: 'PYFHCJ,LTDEAF',
-        column: BFSMDM}
-  - type: DataRowPanel
-    properties: {role: underline, align: left, tooltip: '', border: '', foreground: '',
-      auto_display_data: true, visible: true, item: null, font_size: null, font: '',
-      spacing_above: none, spacing_below: none, italic: false, background: '', bold: false,
-      underline: false}
-    name: data_row_panel_3
-    layout_properties: {grid_position: 'PHKZPE,ETBQOF'}
-    components:
-    - type: Label
-      properties: {role: body, align: left, tooltip: '', border: '', foreground: '',
-        visible: true, text: CHEX, font_size: null, font: '', spacing_above: medium,
-        icon_align: left, spacing_below: large, italic: false, background: '', bold: true,
-        underline: false, icon: ''}
-      name: label_5
-      layout_properties: {row: TKOCCF, width_xs: 7, col_xs: 0, width: 392.328, grid_position: 'CPABSR,SEJZIH',
-        column: FEYCNU}
-    - type: Label
-      properties: {role: body, align: right, tooltip: '', border: '', foreground: '',
-        visible: true, text: 0 CHEX, font_size: null, font: '', spacing_above: medium,
-        icon_align: left, spacing_below: large, italic: false, background: '', bold: false,
-        underline: false, icon: ''}
-      name: label_chex_balance
-      layout_properties: {row: TKOCCF, width_xs: 3, col_xs: 9, width: 151, grid_position: 'CPABSR,KCLWIA',
-        column: BFSMDM}
-  - type: Label
-    properties: {role: null, align: left, tooltip: '', border: '', foreground: '#8E8E93',
-      visible: true, text: Enter CHEX Amount, font_size: 16, font: '', spacing_above: small,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: label_4_copy_2
-    layout_properties:
-      col_widths: {}
-      grid_position: BLUBNC,EJNBDA
-  - type: form:chex_text_box
-    properties: {}
-    name: textbox_input
-    layout_properties: {grid_position: 'ERXIPK,ATIWTG'}
-    event_bindings: {change_box: textbox_input_change}
-  - type: Button
-    properties: {role: filled-button, align: center, tooltip: '', border: '', enabled: false,
-      foreground: white, visible: true, text: Redeem, font_size: null, font: Inter,
-      spacing_above: large, icon_align: left, spacing_below: small, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: button_redeem
-    layout_properties: {grid_position: 'TMHQCY,WHNQPY'}
-    event_bindings: {click: button_redeem_click}
+  name: mint_card
+  properties: {background: '', border: '', col_spacing: medium, col_widths: '{}', foreground: '', role: card1, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: mobile}
+  type: ColumnPanel
+container:
+  event_bindings: {show: form_show}
+  type: ColumnPanel
 is_package: true

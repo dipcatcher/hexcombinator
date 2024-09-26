@@ -1,23 +1,21 @@
+allow_embedding: false
 dependencies:
 - app_id: CY6SHX5TPGTSZ6UY
   version: {dev: false}
-services:
-- source: /runtime/services/tables.yml
-  client_config: {}
-  server_config: {}
-startup: {type: form, module: Form1}
-package_name: HEXC
-allow_embedding: false
+metadata: {description: 'HEX Combinator is a trustless, dual-chain HEX index tracking the combined eHEX+pHEX value. Mint CHEX on Ethereum and PulseChain', logo_img: 'asset:Frame 122.jpeg', title: HEX Combinator}
 name: HEX Combinator
-runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
-metadata: {title: HEX Combinator, logo_img: 'asset:Frame 122.jpeg', description: 'HEX
-    Combinator is a trustless, dual-chain HEX index tracking the combined eHEX+pHEX
-    value. Mint CHEX on Ethereum and PulseChain'}
-startup_form: null
-native_deps: {head_html: '<link rel="preconnect" href="https://fonts.googleapis.com">
-
+native_deps:
+  head_html: |-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">'}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js" integrity="sha512-FDcVY+g7vc5CXANbrTSg1K5qLyriCsGDYCE02Li1tXEYdNQPvLPHNE+rT2Mjei8N7fZbe0WLhw27j2SrGRpdMg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+package_name: HEXC
 renamed: true
+runtime_options: {client_version: '3', server_spec: null, server_version: python3-full, version: 2}
+services:
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/tables.yml
+startup: {module: Form1, type: form}
+startup_form: null
